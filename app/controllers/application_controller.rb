@@ -7,8 +7,8 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
   end
 
-  get "/" do
-    erb :welcome
+  get '/' do  # FinerThingsClub landing page
+    erb :index
   end
 
 end
