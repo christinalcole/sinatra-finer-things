@@ -1,0 +1,8 @@
+pam = User.create(username: "Pam", password: "office1")
+toby = User.create(username: "Toby", password: "office2")
+ashes = Book.create(title: "Angela's Ashes", author: "Frank McCourt")
+room = Book.create(title: "A Room With A View", author: "E.M. Forester")
+four_seasons = Song.create(name: "The Four Seasons", artist: "Vivaldi")
+entre_dos_aguas = Song.create(name: "Entre Dos Aguas", artist: "Paco de Lucia")
+toreador = Artwork.create(name: "The Hallucinogenic Toreador", artist: "Dali", category: "painting")
+thorns_roses = Artwork.create(name: "The Path of Thorns and Roses", artist: "Mario Chiodo", category: "sculpture")
