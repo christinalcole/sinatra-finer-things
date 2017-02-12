@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   post '/signup' do
     @user = User.create(params["user"])
     if @user.valid?
+      session[:user_id] = @user.id
       redirect to "/users/#{@user.slug}"
     else
       flash[:message]=@user.errors.full_messages
