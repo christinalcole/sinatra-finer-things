@@ -1,0 +1,38 @@
+user's show page
+<h1>Welcome to Finer Things</h1>
+<h2>No paper, no plastic, and no work talk allowed</h2>
+
+<%= @user.username %>'s Finer Things
+
+<h3>Fine Books</h3>
+<% if @user.books.empty? %>
+  <p>You don't have any books in your collection. Add one <a href="/books/new">here</a></p>
+<% else %>
+  <ol>
+  <% @user.books.each do |book| %>
+    <li><%= book.title %> by <%= book.author %></li>
+  <% end %>
+  </ol>
+<% end %>
+
+<h3>Fine Music</h3>
+<% if @user.songs.empty? %>
+  <p>You don't have any music in your collection. Add one <a href="/songs/new">here</a></p>
+<% else %>
+  <ol>
+  <% @user.songs.each do |song| %>
+    <li><%= song.name %> by <%=song.artist %></li>
+  <% end %>
+  </ol>
+<% end %>
+
+<h3>Fine Art</h3>
+<% if @user.artworks.empty? %>
+  <p>You don't have any art in your collection. Add one <a href="/artworks/new">here</a></p>
+<% else %>
+  <ol>
+  <% @user.artworks.each do |artwork| %>
+    <li><%= artwork.name %> by <%= artwork.artist %> (<%= artwork.category %>)</li>
+  <% end %>
+  </ol>
+<% end %>
