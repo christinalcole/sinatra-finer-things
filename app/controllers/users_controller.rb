@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    @user = User.create(params["user"])
+    @user = User.create(params[:user])
     if @user.valid?
       session[:user_id] = @user.id
       redirect to "/users/#{@user.slug}"
