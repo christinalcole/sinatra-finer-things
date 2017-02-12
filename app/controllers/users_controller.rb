@@ -23,11 +23,26 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
-    erb :'/users/login'
+    if is_logged_in?
+      redirect to "/users/#{current_user.slug}"
+    else
+      erb :'/users/login'
+    end
+  end
+
+  post '/login' do
+    @user = User.find_by_username(params[:user][:username])
+    if @user && @user.authenticate(params[:user][:password])
+      session[:user_id] = @user.id
+      redirect to "/users/#{@user.slug}"
+    # else
+    #   flash[:message]=@user.errors.full_messages
+    #   redirect to "/login"
+    end
   end
 
   get '/users/:slug' do
-    "this is the user show page"
+    erb :'/users/show'
   end
 
   get '/logout' do
