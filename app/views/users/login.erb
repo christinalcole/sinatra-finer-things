@@ -1,5 +1,10 @@
 <h1>Log In to the Finer Things Club</h1>
 
+<% if flash.has?(:message) %>
+  <p><%= flash[:message] %></p>
+  <p>If you don't have an account, <a href="/signup">sign up</a> here.</p>
+<% end %>
+
 <form method=POST action='/login'>
   <label>Your Username: </label>
   <input type="text" name="user[username]" placeholder="username">
