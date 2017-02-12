@@ -1,4 +1,7 @@
+require 'rack-flash'
 class UsersController < ApplicationController
+
+  use Rack::Flash
 
   get '/signup' do
     erb :'/users/create_user'
@@ -6,7 +9,12 @@ class UsersController < ApplicationController
 
   post '/signup' do
     @user = User.create(params["user"])
-    redirect to "/users/#{@user.slug}"
+    if @user.valid?
+      redirect to "/users/#{@user.slug}"
+    else
+      flash[:message]=@user.errors.full_messages
+      redirect to "/signup"
+    end
   end
 
   get '/login' do
