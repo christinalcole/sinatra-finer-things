@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   use Rack::Flash
 
   get '/signup' do
+    if is_logged_in?
+      redirect to "/users/#{current_user.slug}"
+    else
     erb :'/users/create_user'
+  end
   end
 
   post '/signup' do
@@ -24,6 +28,10 @@ class UsersController < ApplicationController
 
   get '/users/:slug' do
     "this is the user show page"
+  end
+
+  get '/logout' do
+    session.clear
   end
 
 end
