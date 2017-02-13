@@ -1,13 +1,20 @@
 class BooksController < ApplicationController
 
+  use Rack::Flash
+
   get '/books/new' do
     erb :'books/new'
   end
 
   post '/books' do
     @book = Book.create(params[:book])
-    current_user.books << @book
-    redirect to "/books/#{@book.id}"
+    if @book.valid?
+      current_user.books << @book
+      redirect to "/books/#{@book.id}"
+    else
+      flash[:message] = @book.errors.full_messages
+      redirect to "/books/new"
+    end
   end
 
   get '/books/:id' do # need to revise Slugifiable::slug to use generic 'name' attribute, then revise table columns

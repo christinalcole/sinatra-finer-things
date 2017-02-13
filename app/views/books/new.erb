@@ -1,5 +1,9 @@
 <h1>Add a new book to your Finer Things collection</h1>
 
+<% if flash.has?(:message) %>
+  <p><%= flash[:message].uniq %></p>
+<% end %>
+
 <form method="POST" action="/books">
   <label>Title: </label>
   <input type="text" name="book[title]" placeholder="title">
