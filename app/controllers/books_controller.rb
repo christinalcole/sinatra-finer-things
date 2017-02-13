@@ -3,7 +3,11 @@ class BooksController < ApplicationController
   use Rack::Flash
 
   get '/books/new' do
-    erb :'books/new'
+    if is_logged_in?
+      erb :'books/new'
+    else
+      redirect to "/login"
+    end
   end
 
   post '/books' do
