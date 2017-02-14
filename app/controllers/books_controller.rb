@@ -11,9 +11,10 @@ class BooksController < ApplicationController
   end
 
   post '/books' do
-    @book = Book.create(params[:book])
+    @book = Book.find_or_create_by(params[:book]) do |b| # block assigns the creator_id to the current_user if the method calls 'create'.  Otherwise, block is skipped
+      b.creator_id = current_user.id
+    end
     if @book.valid?
-      @book.update(creator_id: current_user.id)
       current_user.books << @book
       redirect to "/books/#{@book.id}"
     else
