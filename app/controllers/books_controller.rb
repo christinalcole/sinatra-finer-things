@@ -13,6 +13,7 @@ class BooksController < ApplicationController
   post '/books' do
     @book = Book.create(params[:book])
     if @book.valid?
+      @book.update(creator_id: current_user.id)
       current_user.books << @book
       redirect to "/books/#{@book.id}"
     else
