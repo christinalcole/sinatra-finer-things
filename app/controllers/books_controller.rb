@@ -27,6 +27,23 @@ class BooksController < ApplicationController
     @book = Book.find_by_id(params[:id])
     erb :'books/show'
   end
+
+  get '/books/:id/edit' do
+    @book = Book.find_by_id(params[:id])
+    if @book.creator_id == current_user.id
+      erb :'books/edit'
+    else
+      flash[:message] = "Sorry: you can only edit books that you previously entered into the database"
+      redirect to "/books/#{@book.id}" #change this route later...
+    end
+  end
+
+  patch '/books/:id' do
+    @book=Book.find_by_id(params[:id])
+    @book.update(params[:book])
+    flash[:message] = "This book has successfully been updated in the database"
+    redirect to "/books/#{@book.id}"
+  end
 end
 
 

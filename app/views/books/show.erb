@@ -2,4 +2,8 @@ individual book show page
 
 <h1>The newest book in your collection of Finer Things:</h1>
 
+<% if flash.has?(:message) %>
+  <p><%= flash[:message] %></p>
+<% end %>
+
 <p><%= @book.title %> by <%= @book.author %></p>
