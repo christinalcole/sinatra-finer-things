@@ -1,5 +1,9 @@
 book edit form
 
+<% if flash.has?(:message) %>
+  <p><%= flash[:message].uniq %></p>
+<% end %>
+
 <form method="POST" action="/books/<%= @book.id %>">
   <input type="hidden" name="_method" value="PATCH">
   <label>Title: </label>
