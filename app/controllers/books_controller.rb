@@ -2,6 +2,10 @@ class BooksController < ApplicationController
 
   use Rack::Flash
 
+  get '/books' do
+    "post-delete page"
+  end
+
   get '/books/new' do
     if is_logged_in?
       erb :'books/new'
@@ -43,7 +47,7 @@ class BooksController < ApplicationController
   end
 
   patch '/books/:id' do
-    @book=Book.find_by_id(params[:id])
+    @book = Book.find_by_id(params[:id])
     @book.update(params[:book])
     if @book.valid?
       flash[:message] = "This book has successfully been updated in the database"
@@ -52,6 +56,13 @@ class BooksController < ApplicationController
       flash[:message] = @book.errors.full_messages
       redirect to "/books/#{@book.id}/edit"
     end
+  end
+
+  delete '/books/:id/delete' do
+    @book = Book.find_by_id(params[:id])
+    @book.delete
+    flash[:message] = "That book has been successfully removed from the database"
+    redirect to "/books"
   end
 end
 
