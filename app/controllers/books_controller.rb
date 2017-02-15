@@ -3,7 +3,12 @@ class BooksController < ApplicationController
   use Rack::Flash
 
   get '/books' do
-    "post-delete page"
+    if is_logged_in?
+      @books = Book.all
+      erb :'books/index'
+    else
+      redirect to "/login"
+    end
   end
 
   get '/books/new' do

@@ -1,0 +1,21 @@
+books index page
+<h1>All the books in the Finer Things Club database</h1>
+
+<p> There are currently <%= @books.count %> fine books enjoyed by the Club:<p>
+
+<table>
+  <thead>
+    <th>Title</th>
+    <th>Author</th>
+  </thead>
+
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.author %></td>
+        <td><a href="/books/<%= book.id %>"> details</a>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
