@@ -28,8 +28,12 @@ class BooksController < ApplicationController
   end
 
   get '/books/:id' do # need to revise Slugifiable::slug to use generic 'name' attribute, then revise table columns
-    @book = Book.find_by_id(params[:id])
-    erb :'books/show'
+    if is_logged_in?
+      @book = Book.find_by_id(params[:id])
+      erb :'books/show'
+    else
+      redirect to "/login"
+    end
   end
 
   get '/books/:id/edit' do
