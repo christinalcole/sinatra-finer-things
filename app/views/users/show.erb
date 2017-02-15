@@ -4,14 +4,24 @@ user's show page
 
 <%= @user.username %>'s Finer Things
 
+<% if flash.has?(:message) %>
+  <p><%= flash[:message] %></p>
+<% end %>
+
 <h3>Fine Books</h3>
 <% if @user.books.empty? %>
   <p>You don't have any books in your collection. Add one <a href="/books/new">here</a></p>
 <% else %>
   <ol>
   <% @user.books.each do |book| %>
-    <li><%= book.title %> by <%= book.author %></li>
+    <li><%= book.title %> by <%= book.author %>  <a href="/books/<%= book.id %>">details</a>
+       <form method="POST" action="/books/<%= book.id %>/remove">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="remove book from collection">
+      </form>
+    </li>
   <% end %>
+  <li>Add a new book to your collection <a href="/books/new">here</a></li>
   </ol>
 <% end %>
 

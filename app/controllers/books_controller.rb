@@ -25,7 +25,8 @@ class BooksController < ApplicationController
     end
     if @book.valid?
       current_user.books << @book
-      redirect to "/books/#{@book.id}"
+      redirect to "/users/#{current_user.slug}"
+      #redirect to "/books/#{@book.id}"
     else
       flash[:message] = @book.errors.full_messages
       redirect to "/books/new"
@@ -77,6 +78,13 @@ class BooksController < ApplicationController
       flash[:message] = "Sorry: you can only delete a book from the database if you were the first user to enter it in the database."
       redirect to "/books/#{@book.id}"
     end
+  end
+
+  delete '/books/:id/remove' do
+    @book = Book.find_by_id(params[:id])
+    current_user.books.delete(@book)
+    flash[:message] = "That book has been successfully removed from your collection"
+    redirect to "/users/#{current_user.slug}"
   end
 
 end
