@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe ApplicationController do
-
   describe "Homepage" do  # User should see a generic landing page w/ login, signup options to start
     it 'loads the homepage' do
       get '/'
