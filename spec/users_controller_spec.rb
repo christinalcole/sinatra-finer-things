@@ -10,7 +10,7 @@ describe UsersController do
     it 'directs a signed up user to their show page' do
       visit '/signup'
 
-      fill_in "user[username]", with: "betsy ann"
+      fill_in "user[name]", with: "betsy ann"
       fill_in "user[password]", with: "34rain22"
       click_on "Sign Up"
 
@@ -20,7 +20,7 @@ describe UsersController do
     it 'does not let a user sign up without a username' do
       visit '/signup'
 
-      fill_in "user[username]", with: ""
+      fill_in "user[name]", with: ""
       fill_in "user[password]", with: "puppy214"
       click_on "Sign Up"
 
@@ -30,7 +30,7 @@ describe UsersController do
     it 'does not let a user sign up without a password' do
       visit '/signup'
 
-      fill_in "user[username]", with: "black magic woman"
+      fill_in "user[name]", with: "black magic woman"
       fill_in "user[password]", with: ""
       click_on "Sign Up"
 
@@ -38,11 +38,11 @@ describe UsersController do
     end
 
     it 'does not let a logged in user view the signup page' do
-      user = User.create(:username => "black magic woman", :password => "spell99")
+      user = User.create(:name => "black magic woman", :password => "spell99")
 
       params = {
         "user"=>{
-          :username => "black magic woman",
+          :name => "black magic woman",
           :password => "spell99"}
       }
 
@@ -61,11 +61,11 @@ describe UsersController do
     end
 
     it "loads the user's show page after login" do
-      user = User.create(:username => "black magic woman", :password => "spell99")
+      user = User.create(:name => "black magic woman", :password => "spell99")
 
       params = {
         "user"=>{
-          :username => "black magic woman",
+          :name => "black magic woman",
           :password => "spell99"}
       }
 
@@ -77,11 +77,11 @@ describe UsersController do
     end
 
     it 'does not let a logged in user see the login page' do
-      user = User.create(:username => "black magic woman", :password => "spell99")
+      user = User.create(:name => "black magic woman", :password => "spell99")
 
       params = {
         "user"=>{
-          :username => "black magic woman",
+          :name => "black magic woman",
           :password => "spell99"}
       }
 
@@ -95,15 +95,15 @@ describe UsersController do
 
   describe 'User Show Page' do  # User will be able to see all of their 'finer things', and be invited to add new items to their collection
     it 'shows all of a single users finer things' do
-      user = User.create(username: "black magic woman", password: "spell99")
-      user.books.concat(Book.create(title: "Title of my Favorite Book", author: "The guy who wrote it"))
+      user = User.create(name: "black magic woman", password: "spell99")
+      user.books.concat(Book.create(name: "Title of my Favorite Book", author: "The guy who wrote it"))
       user.songs.concat([Song.create(name: "That song I like", artist: "That composer"), Song.create(name: "That other song I like", artist: "That other guy")])
       user.artworks.concat(Artwork.create(name: "My Favorite Painting", artist: "My Favorite Artist", category: "painting"))
 
       # Required login steps, to satisfy user show page logic
       params = {
         "user"=>{
-          :username => "black magic woman",
+          :name => "black magic woman",
           :password => "spell99"}
       }
 
@@ -117,11 +117,11 @@ describe UsersController do
     end
 
     it 'invites a user to add a finer thing if none currently exist' do
-      user = User.create(username: "betsy ann", password: "34rain22")
+      user = User.create(name: "betsy ann", password: "34rain22")
 
       params = {
         "user"=>{
-          :username => "betsy ann",
+          :name => "betsy ann",
           :password => "34rain22"}
       }
 
@@ -135,11 +135,11 @@ describe UsersController do
 
   describe 'Logout Actions' do  # User logout
     it "lets a user logout if they are already logged in" do
-      user = User.create(username: "betsy ann", password: "34rain22")
+      user = User.create(name: "betsy ann", password: "34rain22")
 
       params = {
         :user =>{
-          username: "betsy ann",
+          name: "betsy ann",
           password: "34rain22"
         }
       }
@@ -157,7 +157,7 @@ describe UsersController do
     end
 
     it 'does not load user show page if the user is not logged in' do
-      user = User.create(username: "betsy ann", password: "34rain22")
+      user = User.create(name: "betsy ann", password: "34rain22")
 
       get "/users/#{user.slug}"
 
