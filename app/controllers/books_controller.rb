@@ -60,10 +60,16 @@ class BooksController < ApplicationController
 
   delete '/books/:id/delete' do
     @book = Book.find_by_id(params[:id])
-    @book.delete
-    flash[:message] = "That book has been successfully removed from the database"
-    redirect to "/books"
+    if @book.creator_id == current_user.id
+      @book.delete
+      flash[:message] = "That book has been successfully removed from the database"
+      redirect to "/books"
+    else
+      flash[:message] = "Sorry: you can only delete a book from the database if you were the first user to enter it in the database."
+      redirect to "/books/#{@book.id}"
+    end
   end
+
 end
 
 
