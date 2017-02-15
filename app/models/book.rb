@@ -1,5 +1,5 @@
 class Book < ActiveRecord::Base
-  validates :title, :author, presence: true
+  validates :name, :author, presence: true
 
   has_many :user_books
   has_many :users, through: :user_books
