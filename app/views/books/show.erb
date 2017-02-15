@@ -1,12 +1,16 @@
 individual book show page
 
-<h1>The newest book in your collection of Finer Things:</h1>
+<h1>Book Details:</h1>
 
 <% if flash.has?(:message) %>
   <p><%= flash[:message] %></p>
 <% end %>
 
-<p><%= @book.title %> by <%= @book.author %></p>
+<h3><%= @book.title %> by <%= @book.author %></h3><br>
+
+<p>This book is in the collection of <%= @book.users.count %> club members.</p>
+
+<a href="/books/<%= @book.id %>/edit">Edit Book Details</a>
 
 <form method="POST" action="/books/<%= @book.id %>/delete">
   <input type="hidden" name="_method" value="delete">
