@@ -1,0 +1,23 @@
+artworks index page
+<h1>The Finer Things Club Gallery, a listing of all the works of art in the database</h1>
+
+<p> There are currently <%= @artworks.count %> pieces of art in the Club's gallery:<p>
+
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Artist</th>
+    <th>Type of Art</th>
+  </thead>
+
+  <tbody>
+    <% @artworks.each do |art| %>
+      <tr>
+        <td><%= art.name %></td>
+        <td><%= art.artist %></td>
+        <td><%= art.category %></td>
+        <td><a href="/artworks/<%= art.slug %>"> details</a>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
