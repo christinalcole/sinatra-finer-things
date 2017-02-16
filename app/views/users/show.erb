@@ -14,7 +14,7 @@ user's show page
 <% else %>
   <ol>
   <% @user.books.each do |book| %>
-    <li><%= book.title %> by <%= book.author %>  <a href="/books/<%= book.id %>">details</a>
+    <li><%= book.name %> by <%= book.author %>  <a href="/books/<%= book.id %>">details</a>
        <form method="POST" action="/books/<%= book.id %>/remove">
         <input type="hidden" name="_method" value="DELETE">
         <input type="submit" value="remove book from collection">

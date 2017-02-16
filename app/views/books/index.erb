@@ -12,7 +12,7 @@ books index page
   <tbody>
     <% @books.each do |book| %>
       <tr>
-        <td><%= book.title %></td>
+        <td><%= book.name %></td>
         <td><%= book.author %></td>
         <td><a href="/books/<%= book.id %>"> details</a>
       </tr>
