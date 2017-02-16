@@ -33,55 +33,56 @@ class BooksController < ApplicationController
     end
   end
 
-  get '/books/:id' do # need to revise Slugifiable::slug to use generic 'name' attribute, then revise table columns
+  get '/books/:slug' do # need to revise Slugifiable::slug to use generic 'name' attribute, then revise table columns
     if is_logged_in?
-      @book = Book.find_by_id(params[:id])
+      @book = Book.find_by_slug(params[:slug])
+      #@book = Book.find_by_id(params[:id])
       erb :'books/show'
     else
       redirect to "/login"
     end
   end
 
-  get '/books/:id/edit' do
+  get '/books/:slug/edit' do
     if is_logged_in?
-      @book = Book.find_by_id(params[:id])
+      @book = Book.find_by_slug(params[:slug])
       if @book.creator_id == current_user.id
         erb :'books/edit'
       else
         flash[:message] = "Sorry: you can only edit books that you previously entered into the database"
-        redirect to "/books/#{@book.id}" #change this route later...
+        redirect to "/books/#{@book.slug}" #change this route later...
       end
     else
       redirect to "/login"
     end
   end
 
-  patch '/books/:id' do
-    @book = Book.find_by_id(params[:id])
+  patch '/books/:slug' do
+    @book = Book.find_by_slug(params[:slug])
     @book.update(params[:book])
     if @book.valid?
       flash[:message] = "This book has successfully been updated in the database"
-      redirect to "/books/#{@book.id}"
+      redirect to "/books/#{@book.slug}"
     else
       flash[:message] = @book.errors.full_messages
-      redirect to "/books/#{@book.id}/edit"
+      redirect to "/books/#{Book.find_by_slug(params[:slug]).slug}/edit"
     end
   end
 
-  delete '/books/:id/delete' do
-    @book = Book.find_by_id(params[:id])
+  delete '/books/:slug/delete' do
+    @book = Book.find_by_slug(params[:slug])
     if @book.creator_id == current_user.id
       @book.delete
       flash[:message] = "That book has been successfully removed from the database"
       redirect to "/books"
     else
       flash[:message] = "Sorry: you can only delete a book from the database if you were the first user to enter it in the database."
-      redirect to "/books/#{@book.id}"
+      redirect to "/books/#{@book.slug}"
     end
   end
 
-  delete '/books/:id/remove' do
-    @book = Book.find_by_id(params[:id])
+  delete '/books/:slug/remove' do
+    @book = Book.find_by_slug(params[:slug])
     current_user.books.delete(@book)
     flash[:message] = "That book has been successfully removed from your collection"
     redirect to "/users/#{current_user.slug}"

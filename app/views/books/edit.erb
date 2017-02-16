@@ -4,7 +4,7 @@ book edit form
   <p><%= flash[:message].uniq %></p>
 <% end %>
 
-<form method="POST" action="/books/<%= @book.id %>">
+<form method="POST" action="/books/<%= @book.slug %>">
   <input type="hidden" name="_method" value="PATCH">
   <label>Title: </label>
   <input type="text" name="book[name]" value="<%= @book.name %>">
