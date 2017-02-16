@@ -10,7 +10,11 @@ class ArtworksController < ApplicationController
   end
 
   get '/artworks/:slug' do
-    @artwork = Artwork.find_by_slug(params[:slug])
-    erb :'artworks/show'
+    if is_logged_in?
+      @artwork = Artwork.find_by_slug(params[:slug])
+      erb :'artworks/show'
+    else
+      redirect to "/login"
+    end
   end
 end
