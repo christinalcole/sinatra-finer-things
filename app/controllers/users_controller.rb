@@ -3,6 +3,15 @@ class UsersController < ApplicationController
 
   use Rack::Flash
 
+  get '/users' do
+    if is_logged_in?
+      @users = User.all
+      erb :'users/index'
+    else
+      redirect to "/login"
+    end
+  end
+
   get '/signup' do
     if is_logged_in?
       redirect to "/users/#{current_user.slug}"
