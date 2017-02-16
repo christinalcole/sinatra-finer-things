@@ -1,6 +1,11 @@
 class ArtworksController < ApplicationController
+
   get '/artworks' do
-    @artworks = Artwork.all
-    erb :'artworks/index'
+    if is_logged_in?
+      @artworks = Artwork.all
+      erb :'artworks/index'
+    else
+      redirect to "/login"
+    end
   end
 end
