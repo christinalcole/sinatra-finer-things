@@ -135,7 +135,7 @@ describe BooksController do
         fill_in "user[password]", with: "34rain22"
         click_button 'Log In'
 
-        visit "/books/#{book.id}"
+        visit "/books/#{book.slug}"
 
         expect(page.status_code).to eq(200)
         expect(page.body).to include("Delete Book")
@@ -149,7 +149,7 @@ describe BooksController do
         user = User.create(name: "betsy ann", password: "34rain22")
         book = Book.create(name: "My Book", author: "My author")
 
-        get "/books/#{book.id}"
+        get "/books/#{book.slug}"
 
         expect(last_response.location).to include("/login")
       end
@@ -168,7 +168,7 @@ describe BooksController do
         fill_in "user[password]", with: "spell99"
         click_button 'Log In'
 
-        visit '/books/1/edit'
+        visit "/books/#{book.slug}/edit"
 
         expect(page.status_code).to eq(200)
         expect(page.body).to include(book.name, book.author)
@@ -188,9 +188,9 @@ describe BooksController do
         session = {}
         session[:user_id] = user1.id
 
-        visit "/books/#{book2.id}/edit"
+        visit "/books/#{book2.slug}/edit"
 
-        expect(page.current_path).to eq("/books/#{book2.id}")
+        expect(page.current_path).to eq("/books/#{book2.slug}")
       end
 
       it 'lets a user edit a book that they created if they are logged in' do
@@ -202,7 +202,7 @@ describe BooksController do
         fill_in "user[password]", with: "34rain22"
         click_button 'Log In'
 
-        visit '/books/1/edit'
+        visit "/books/#{book1.slug}/edit"
         fill_in "book[author]", with: "My Book's Other Author"
         click_button 'Edit Book'
 
@@ -220,12 +220,12 @@ describe BooksController do
         fill_in "user[password]", with: "34rain22"
         click_button 'Log In'
 
-        visit '/books/1/edit'
+        visit "/books/#{book1.slug}/edit"
         fill_in "book[name]", with: ""
         click_button 'Edit Book'
 
         expect(Book.find_by(name: "")).to be(nil)
-        expect(page.current_path).to eq("/books/1/edit")
+        expect(page.current_path).to eq("/books/#{book1.slug}/edit")
       end
     end
 
@@ -248,7 +248,7 @@ describe BooksController do
         fill_in "user[password]", with: "34rain22"
         click_button 'Log In'
 
-        visit "/books/#{book.id}"
+        visit "/books/#{book.slug}"
         click_button 'Delete Book'
 
         expect(page.status_code).to eq(200)
@@ -267,12 +267,12 @@ describe BooksController do
         fill_in "user[password]", with: "34rain22"
         click_button 'Log In'
 
-        visit "/books/#{book2.id}"
+        visit "/books/#{book2.slug}"
         click_button 'Delete Book'
 
         expect(page.status_code).to eq(200)
         expect(Book.find_by(name: "My Other Book")).to be_instance_of(Book)
-        expect(page.current_path).to eq('/books/2')
+        expect(page.current_path).to eq("/books/#{book2.slug}")
       end
     end
 
