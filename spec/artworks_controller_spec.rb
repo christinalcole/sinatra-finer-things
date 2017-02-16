@@ -49,4 +49,22 @@ describe ArtworksController do
       expect(page.body).to include("Edit Artwork")
     end
   end
+
+  describe 'Artwork Create Page' do # Allows logged-in user to add a new artwork object to the database
+    context 'logged in' do
+      it 'displays the new artwork form if a user is logged in' do
+        user = User.create(name: "betsy ann", password: "34rain22")
+        artwork = Artwork.create(name: "The Ship", artist: "Salvador Dali", category: "painting", creator_id: user.id)
+
+        visit '/login'
+        fill_in "user[name]", with: "betsy ann"
+        fill_in "user[password]", with: "34rain22"
+        click_button 'Log In'
+
+        visit '/artworks/new'
+
+        expect(page.status_code).to eq(200)
+      end
+    end
+  end
 end

@@ -1,0 +1,19 @@
+<h1>Add a new piece of art to your Finer Things collection</h1>
+
+<% if flash.has?(:message) %>
+  <p><%= flash[:message].uniq %></p>
+<% end %>
+
+<form method="POST" action="/artworks">
+  <label>Name: </label>
+  <input type="text" name="artwork[name]" placeholder="artwork name">
+  <label>Artist: </label>
+  <input type="text" name="artwork[artist]" placeholder="artist"><br></br>
+  <label>Category: </label>
+    <% @artworks.each do |art| %>
+      <input type="checkbox" name="artwork[category]" value="<%= art.category %>"><%= art.category %></input>
+    <% end %><br></br>
+  <label>Or create a new category: </label>
+  <input type="text" name="category"><br></br>
+  <input type="submit" name="submit" value="Add Art">
+</form>
