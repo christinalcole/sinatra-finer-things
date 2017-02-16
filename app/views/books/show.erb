@@ -10,7 +10,7 @@ individual book show page
 
 <p>This book is in the collection of <%= @book.users.count %> club members.</p>
 
-<a href="/books/<%= @book.id %>/edit">Edit Book Details</a>
+<a href="/books/<%= @book.slug %>/edit">Edit Book Details</a>
 
 <form method="POST" action="/books/<%= @book.slug %>/delete">
   <input type="hidden" name="_method" value="delete">
