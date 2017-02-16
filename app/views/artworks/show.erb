@@ -1,0 +1,19 @@
+artwork show page
+
+<h1>Artwork Details:</h1>
+
+<% if flash.has?(:message) %>
+  <p><%= flash[:message] %></p>
+<% end %>
+
+<h3><%= @artwork.name %> by <%= @artwork.artist %></h3><br>
+<p>category: <%= @artwork.category %>
+
+<p>This book is in the collection of <%= @artwork.users.count %> club members.</p>
+
+<a href="/artwork/<%= @artwork.slug %>/edit">Edit Artwork Details</a>
+
+<form method="POST" action="/artwork/<%= @artwork.slug %>/delete">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Artwork">
+</form>

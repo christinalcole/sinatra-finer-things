@@ -31,5 +31,22 @@ describe ArtworksController do
     end
   end
 
-  
+  describe 'Artwork Show Page' do # Displays details of artwork object to user
+    it 'displays a single artwork' do
+      user = User.create(name: "betsy ann", password: "34rain22")
+      artwork = Artwork.create(name: "The Ship", artist: "Salvador Dali", category: "painting", creator_id: user.id)
+
+      visit '/login'
+      fill_in "user[name]", with: "betsy ann"
+      fill_in "user[password]", with: "34rain22"
+      click_button 'Log In'
+
+      visit "/artworks/#{artwork.slug}"
+
+      expect(page.status_code).to eq(200)
+      expect(page.body).to include("Delete Artwork")
+      expect(page.body).to include(artwork.name, artwork.artist, artwork.category)
+      expect(page.body).to include("Edit Artwork")
+    end
+  end
 end

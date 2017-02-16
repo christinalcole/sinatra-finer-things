@@ -8,4 +8,9 @@ class ArtworksController < ApplicationController
       redirect to "/login"
     end
   end
+
+  get '/artworks/:slug' do
+    @artwork = Artwork.find_by_slug(params[:slug])
+    erb :'artworks/show'
+  end
 end
