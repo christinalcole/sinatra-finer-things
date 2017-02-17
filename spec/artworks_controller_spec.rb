@@ -65,6 +65,28 @@ describe ArtworksController do
 
         expect(page.status_code).to eq(200)
       end
+
+      it 'lets a user create a book if logged in' do
+        user = User.create(name: "betsy ann", password: "34rain22")
+
+        visit '/login'
+        fill_in "user[name]", with: "betsy ann"
+        fill_in "user[password]", with: "34rain22"
+        click_button 'Log In'
+
+        visit '/artworks/new'
+        fill_in "artwork[name]", with: "My Mobile"
+        fill_in "artwork[artist]", with: "My Mobile's Artist"
+        fill_in "category", with: "mobile"
+        click_button 'Add Art'
+
+        user = User.find_by(name: "betsy ann")
+        artwork = Artwork.find_by(name: "My Mobile")
+
+        expect(artwork).to be_instance_of(Artwork)
+        expect(user.artworks).to include(artwork)
+        expect(page.status_code).to eq(200)
+      end
     end
   end
 end
