@@ -26,8 +26,13 @@ class ArtworksController < ApplicationController
     else
       @artwork = Artwork.create(name: params[:artwork][:name], artist: params[:artwork][:artist], category: params[:category], creator_id: current_user.id)
     end
+    if @artwork.valid?
       current_user.artworks << @artwork
       redirect to "/users/#{current_user.slug}"
+    else
+      flash[:message] = @artwork.errors.full_messages
+      redirect to "/artworks/new"
+    end
   end
 
   # {"artwork"=>

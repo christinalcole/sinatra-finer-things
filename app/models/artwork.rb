@@ -1,4 +1,6 @@
 class Artwork < ActiveRecord::Base
+  validates :name, :artist, :category, presence: true
+  
   has_many :user_artworks
   has_many :users, through: :user_artworks
 
