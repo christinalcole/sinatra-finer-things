@@ -230,4 +230,81 @@ describe ArtworksController do
       end
     end
   end
+
+  describe 'Artwork Delete Actions' do
+    context "logged in" do
+      it 'lets a user delete an artwork of their creation if logged in' do
+        user = User.create(name: "betsy ann", password: "34rain22")
+        artwork = Artwork.create(name: "My Art", artist: "My Art's Artist", category: "fingerpainting", creator_id: user.id)
+
+        visit '/login'
+        fill_in "user[name]", with: "betsy ann"
+        fill_in "user[password]", with: "34rain22"
+        click_button 'Log In'
+
+        visit "/artworks/#{artwork.slug}"
+        click_button 'Delete Artwork'
+
+        expect(page.status_code).to eq(200)
+        expect(Artwork.find_by(name: "My Art")).to eq(nil)
+      end
+
+      it 'does not let a user delete a artwork they did not create' do
+        user1 = User.create(name: "betsy ann", password: "34rain22")
+        artwork1 = Artwork.create(name: "My Art", artist: "My Art's Artist", category: "fingerpainting", creator_id: user1.id)
+
+        user2 = User.create(name: "black magic woman", password: "spell99")
+        artwork2 = Artwork.create(name: "My Other Art", artist: "That Other Artist", category: "fingerpainting", creator_id: user2.id)
+
+        visit '/login'
+        fill_in "user[name]", with: "betsy ann"
+        fill_in "user[password]", with: "34rain22"
+        click_button 'Log In'
+
+        visit "/artworks/#{artwork2.slug}"
+        click_button 'Delete Artwork'
+
+        expect(page.status_code).to eq(200)
+        expect(Artwork.find_by(name: "My Other Art")).to be_instance_of(Artwork)
+        expect(page.current_path).to eq("/artworks/#{artwork2.slug}")
+      end
+    end
+  end
+
+  describe 'Artwork Remove Actions' do
+    it 'lets a user remove an artwork from their collection' do
+      user = User.create(name: "betsy ann", password: "34rain22")
+      artwork = Artwork.create(name: "My Art", artist: "My Art's Artist", category: "fingerpainting", creator_id: user.id)
+      user.artworks << artwork
+
+      visit '/login'
+      fill_in "user[name]", with: "betsy ann"
+      fill_in "user[password]", with: "34rain22"
+      click_button 'Log In'
+
+      visit "/users/#{user.slug}"
+      click_button 'remove art from collection'
+
+      user = User.find_by(name: "betsy ann")
+      artwork = Artwork.find_by(name: "My Art")
+
+      expect(user.artworks).to_not include(artwork)
+    end
+
+    it 'does not delete the removed artwork from the database' do
+      user = User.create(name: "betsy ann", password: "34rain22")
+      artwork = Artwork.create(name: "My Art", artist: "My Art's Artist", category: "fingerpainting", creator_id: user.id)
+      user.artworks << artwork
+
+      visit '/login'
+      fill_in "user[name]", with: "betsy ann"
+      fill_in "user[password]", with: "34rain22"
+      click_button 'Log In'
+
+      visit "/users/#{user.slug}"
+      click_button 'remove art from collection'
+
+      expect(Artwork.all).to include(artwork)
+    end
+  end
 end
