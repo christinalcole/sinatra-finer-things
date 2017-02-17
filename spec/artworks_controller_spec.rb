@@ -87,6 +87,66 @@ describe ArtworksController do
         expect(user.artworks).to include(artwork)
         expect(page.status_code).to eq(200)
       end
+
+      it 'does not let a user create art without a name, artist, or category' do
+        user = User.create(name: "betsy ann", password: "34rain22")
+
+        visit '/login'
+        fill_in "user[name]", with: "betsy ann"
+        fill_in "user[password]", with: "34rain22"
+        click_button 'Log In'
+
+        visit '/artworks/new'
+        fill_in "artwork[name]", with: ""
+        fill_in "artwork[name]", with: "My art's Artist"
+        fill_in "category", with: ""
+        click_button 'Add Art'
+
+        expect(Artwork.find_by(name: "")).to eq(nil)
+        expect(Artwork.find_by(category: "")).to eq(nil)
+        expect(page.current_path).to eq("/artworks/new")
+
+        visit '/artworks/new'
+        fill_in "artwork[name]", with: ""
+        fill_in "artwork[artist]", with: ""
+        fill_in "category", with: "fingerpainting"
+        click_button 'Add Art'
+
+        expect(Artwork.find_by(artist: "")).to eq(nil)
+        expect(page.current_path).to eq("/artworks/new")
+      end
+
+      it 'does not let a user create art for another user' do
+        user = User.create(name: "betsy ann", password: "34rain22")
+        user2 = User.create(name: "black magic woman", password: "gypsy99")
+
+        visit '/login'
+        fill_in "user[name]", with: "betsy ann"
+        fill_in "user[password]", with: "34rain22"
+        click_button 'Log In'
+
+        visit '/artworks/new'
+        fill_in "artwork[name]", with: "My Art's Title"
+        fill_in "artwork[artist]", with: "My art's Artist"
+        fill_in "category", with: "fingerpainting"
+        click_button 'Add Art'
+
+        user = User.find_by_id(user.id)
+        user2 = User.find_by_id(user2.id)
+        art = Artwork.find_by(name: "My Art's Title")
+
+        expect(art).to be_instance_of(Artwork)
+        expect(user.artworks).to include(art)
+        expect(art.users).not_to eq(user2)
+        expect(art.creator_id).to eq(user.id)
+      end
+    end
+
+    context 'logged out' do
+      it 'does not let user view new artwork form if not logged in' do
+        get '/artworks/new'
+        expect(last_response.location).to include("/login")
+      end
     end
   end
 end
