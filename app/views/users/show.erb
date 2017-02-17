@@ -43,6 +43,10 @@ user's show page
   <ol>
   <% @user.artworks.each do |artwork| %>
     <li><%= artwork.name %> by <%= artwork.artist %> (<%= artwork.category %>)</li>  <a href="/artworks/<%= artwork.slug %>">details</a>
+    <form method="POST" action="/artworks/<%= artwork.slug %>/remove">
+     <input type="hidden" name="_method" value="DELETE">
+     <input type="submit" value="remove art from collection">
+   </form>
   <% end %>
   <li>Add new art to your collection <a href="/artworks/new">here</a></li>
   </ol>

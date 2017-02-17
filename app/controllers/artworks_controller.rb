@@ -94,5 +94,12 @@ class ArtworksController < ApplicationController
     end
   end
 
+  delete '/artworks/:slug/remove' do
+    @artwork = Artwork.find_by_slug(params[:slug])
+    current_user.artworks.delete(@artwork)
+    flash[:message] = "This art has been successfully removed from your collection"
+    redirect to "/users/#{current_user.slug}"
+  end
+
 
 end
