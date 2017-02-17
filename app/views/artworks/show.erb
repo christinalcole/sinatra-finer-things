@@ -13,7 +13,7 @@ artwork show page
 
 <a href="/artworks/<%= @artwork.slug %>/edit">Edit Artwork Details</a>
 
-<form method="POST" action="/artwork/<%= @artwork.slug %>/delete">
+<form method="POST" action="/artworks/<%= @artwork.slug %>/delete">
   <input type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete Artwork">
 </form>

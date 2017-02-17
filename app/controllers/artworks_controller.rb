@@ -82,5 +82,17 @@ class ArtworksController < ApplicationController
     end
   end
 
+  delete '/artworks/:slug/delete' do
+    @artwork = Artwork.find_by_slug(params[:slug])
+    if @artwork.creator_id == current_user.id
+      @artwork.delete
+      flash[:message] = "That art has been successfully removed from the database"
+      redirect to "/artworks"
+    else
+      flash[:message] = "Sorry, you can only delete art from the database if you were its creator"
+      redirect to "/artworks/#{@artwork.slug}"
+    end
+  end
+
 
 end
