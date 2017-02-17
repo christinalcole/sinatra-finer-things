@@ -4,7 +4,8 @@ artwork edit form
   <p><%= flash[:message].uniq %></p>
 <% end %>
 
-<form method="POST" action="/artworks/<%= @artwork.slug %>/edit">
+<form method="POST" action="/artworks/<%= @artwork.slug %>">
+  <input type="hidden" name="_method" value="PATCH">
   <label>Name: </label>
   <input type="text" name="artwork[name]" value="<%= @artwork.name %>">
   <label>Artist: </label>
@@ -15,5 +16,5 @@ artwork edit form
     <% end %><br></br>
   <label>Or create a new category: </label>
   <input type="text" name="category"><br></br>
-  <input type="submit" name="submit" value="Add Art">
+  <input type="submit" name="submit" value="Edit Art">
 </form>

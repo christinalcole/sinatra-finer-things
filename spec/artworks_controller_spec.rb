@@ -149,4 +149,85 @@ describe ArtworksController do
       end
     end
   end
+
+  describe 'Artwork Edit Actions' do
+    context 'logged in' do
+      it 'lets a user view the artwork edit form if logged in' do
+        user = User.create(name: "black magic woman", password: "spell99")
+        artwork = Artwork.create(name: "The Ship", artist: "Salvador Dali", category: "painting", creator_id: user.id)
+
+        visit '/login'
+        fill_in "user[name]", with: "black magic woman"
+        fill_in "user[password]", with: "spell99"
+        click_button 'Log In'
+
+        visit "/artworks/#{artwork.slug}/edit"
+
+        expect(page.status_code).to eq(200)
+        expect(page.body).to include(artwork.name, artwork.artist, artwork.category)
+      end
+
+      it 'does not let a user edit art that they did not create' do
+        user1 = User.create(name: "betsy ann", password: "34rain22")
+        artwork1 = Artwork.create(name: "My Art", artist: "My Art's Artist", category: "painting", creator_id: user1.id)
+
+        user2 = User.create(name: "black magic woman", password: "spell99")
+        artwork2 = Artwork.create(name: "The Ship", artist: "Salvador Dali", category: "painting", creator_id: user2.id)
+
+        visit '/login'
+        fill_in "user[name]", with: "betsy ann"
+        fill_in "user[password]", with: "34rain22"
+        click_button 'Log In'
+        session = {}
+        session[:user_id] = user1.id
+
+        visit "/artworks/#{artwork2.slug}/edit"
+
+        expect(page.current_path).to eq("/artworks/#{artwork2.slug}")
+      end
+
+      it 'lets a user edit art that they created if they are logged in' do
+        user1 = User.create(name: "betsy ann", password: "34rain22")
+        artwork1 = Artwork.create(name: "My Art", artist: "My Art's Artist", category: "painting", creator_id: user1.id)
+
+        visit '/login'
+        fill_in "user[name]", with: "betsy ann"
+        fill_in "user[password]", with: "34rain22"
+        click_button 'Log In'
+
+        visit "/artworks/#{artwork1.slug}/edit"
+        fill_in "artwork[artist]", with: "My Art's Other Artist"
+        click_button 'Edit Art'
+
+        expect(Artwork.find_by(artist: "My Art's Other Artist")).to be_instance_of(Artwork)
+        expect(Artwork.find_by(artist: "My Art's Artist")).to eq(nil)
+        expect(page.status_code).to eq(200)
+      end
+
+      it 'does not let a user edit art to have blank content' do
+        user1 = User.create(name: "betsy ann", password: "34rain22")
+        artwork1 = Artwork.create(name: "My Art", artist: "My Art's Artist", category: "painting", creator_id: user1.id)
+
+        visit '/login'
+        fill_in "user[name]", with: "betsy ann"
+        fill_in "user[password]", with: "34rain22"
+        click_button 'Log In'
+
+        visit "/artworks/#{artwork1.slug}/edit"
+        fill_in "artwork[name]", with: ""
+        click_button 'Edit Art'
+
+        artwork1 = Artwork.find_by_id(1)
+        expect(Artwork.find_by(name: "")).to be(nil)
+        expect(page.current_path).to eq("/artworks/#{artwork1.slug}/edit")
+      end
+    end
+
+    context "logged out" do
+      it 'does not let user view artwork edit form if not logged in' do
+        get '/artworks/1/edit'
+        expect(last_response.location).to include("/login")
+      end
+    end
+  end
 end

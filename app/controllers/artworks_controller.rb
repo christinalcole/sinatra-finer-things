@@ -66,5 +66,21 @@ class ArtworksController < ApplicationController
     end
   end
 
+  patch '/artworks/:slug' do #since only a user that created the art can update it, no need to update creator_id
+    @artwork = Artwork.find_by_slug(params[:slug])
+    if params[:artwork][:category].nil?
+      @artwork.update(name: params[:artwork][:name], artist: params[:artwork][:artist], category: params[:category])
+    else
+      @artwork.update(params[:artwork])
+    end
+    if @artwork.valid?
+      flash[:message] = "This art has been successfully updated"
+      redirect to "/artworks/#{@artwork.slug}"
+    else
+      flash[:message] = @artwork.errors.full_messages
+      redirect to "/artworks/#{Artwork.find_by_slug(params[:slug]).slug}/edit"
+    end
+  end
+
 
 end
