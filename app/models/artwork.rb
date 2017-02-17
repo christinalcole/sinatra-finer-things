@@ -6,4 +6,10 @@ class Artwork < ActiveRecord::Base
 
   extend Slugifiable::ClassMethods
   include Slugifiable::InstanceMethods
+
+  def self.categories
+    self.all.collect do |art|
+      art.category
+    end.uniq
+  end
 end
