@@ -51,5 +51,20 @@ class ArtworksController < ApplicationController
     end
   end
 
+  get '/artworks/:slug/edit' do
+    if is_logged_in?
+      @artworks = Artwork.all
+      @artwork = Artwork.find_by_slug(params[:slug])
+      if @artwork.creator_id == current_user.id
+        erb :'artworks/edit'
+      else
+        flash[:message] = "Sorry, you can only edit artwork that you previously entered into the database"
+        redirect to "/artworks/#{@artwork.slug}"
+      end
+    else
+      redirect to "/login"
+    end
+  end
+
 
 end

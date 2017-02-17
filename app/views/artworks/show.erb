@@ -11,7 +11,7 @@ artwork show page
 
 <p>This book is in the collection of <%= @artwork.users.count %> club members.</p>
 
-<a href="/artwork/<%= @artwork.slug %>/edit">Edit Artwork Details</a>
+<a href="/artworks/<%= @artwork.slug %>/edit">Edit Artwork Details</a>
 
 <form method="POST" action="/artwork/<%= @artwork.slug %>/delete">
   <input type="hidden" name="_method" value="delete">

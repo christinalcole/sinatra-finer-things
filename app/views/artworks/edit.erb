@@ -1,0 +1,19 @@
+artwork edit form
+
+<% if flash.has?(:message) %>
+  <p><%= flash[:message].uniq %></p>
+<% end %>
+
+<form method="POST" action="/artworks/<%= @artwork.slug %>/edit">
+  <label>Name: </label>
+  <input type="text" name="artwork[name]" value="<%= @artwork.name %>">
+  <label>Artist: </label>
+  <input type="text" name="artwork[artist]" value="<%= @artwork.artist %>"><br></br>
+  <label>Category: </label>
+    <% @artworks.categories.each do |category| %>
+      <input type="checkbox" name="artwork[category]" value="<%= category %>" <%= 'checked' if @artwork.category==category %>><%= category %></input>
+    <% end %><br></br>
+  <label>Or create a new category: </label>
+  <input type="text" name="category"><br></br>
+  <input type="submit" name="submit" value="Add Art">
+</form>
