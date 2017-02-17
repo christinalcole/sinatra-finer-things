@@ -42,7 +42,7 @@ user's show page
 <% else %>
   <ol>
   <% @user.artworks.each do |artwork| %>
-    <li><%= artwork.name %> by <%= artwork.artist %> (<%= artwork.category %>)</li>
+    <li><%= artwork.name %> by <%= artwork.artist %> (<%= artwork.category %>)</li>  <a href="/artworks/<%= artwork.slug %>">details</a>
   <% end %>
   <li>Add new art to your collection <a href="/artworks/new">here</a></li>
   </ol>
