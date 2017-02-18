@@ -63,4 +63,16 @@ class SongsController < ApplicationController
       redirect to "/songs/#{Song.find_by_slug(params[:slug]).slug}/edit"
     end
   end
+
+  delete '/songs/:slug/delete' do
+    @song = Song.find_by_slug(params[:slug])
+    if @song.creator_id == current_user.id
+      @song.delete
+      flash[:message] = "That music has been successfully removed from the database"
+      redirect to "/songs"
+    else
+      flash[:message] = "Sorry: you can only delete music from the database if you were its creator"
+      redirect to "/songs/#{@song.slug}"
+    end
+  end
 end
