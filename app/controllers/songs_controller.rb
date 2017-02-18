@@ -8,6 +8,14 @@ class SongsController < ApplicationController
     end
   end
 
+  get '/songs/new' do
+    if is_logged_in?
+      erb :'songs/new'
+    else
+      redirect to "/login"
+    end
+  end
+
   get '/songs/:slug' do
     if is_logged_in?
       @song = Song.find_by_slug(params[:slug])
