@@ -31,7 +31,7 @@ user's show page
 <% else %>
   <ol>
   <% @user.songs.each do |song| %>
-    <li><%= song.name %> by <%=song.artist %></li>
+    <li><%= song.name %> by <%=song.artist %></li>  <a href="/songs/<%= song.slug %>">details</a>
   <% end %>
   </ol>
 <% end %>
