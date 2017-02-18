@@ -167,7 +167,7 @@ describe SongsController do
         song1 = Song.create(name: "My Song", artist: "My Song's Artist", creator_id: user1.id)
 
         user2 = User.create(name: "black magic woman", password: "spell99")
-        song2 = Song.create(name: "My Song", artist: "My Song's Artist", creator_id: user2.id)
+        song2 = Song.create(name: "My Other Song", artist: "My Other Song's Artist", creator_id: user2.id)
 
         visit '/login'
         fill_in "user[name]", with: "betsy ann"
