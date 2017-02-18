@@ -20,8 +20,13 @@ class SongsController < ApplicationController
     @song = Song.find_or_create_by(params[:song]) do |s|
       s.creator_id = current_user.id
     end
-    current_user.songs << @song
-    redirect to "/users/#{current_user.slug}"
+    if @song.valid?
+      current_user.songs << @song
+      redirect to "/users/#{current_user.slug}"
+    else
+      flash[:message] = @song.errors.full_messages
+      redirect to "/songs/new"
+    end
   end
 
   get '/songs/:slug' do

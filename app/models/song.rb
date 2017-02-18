@@ -1,4 +1,6 @@
 class Song < ActiveRecord::Base
+  validates :name, :artist, presence: true
+   
   has_many :user_songs
   has_many :users, through: :user_songs
 
