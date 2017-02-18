@@ -1,0 +1,21 @@
+songs index page
+<h1>The Finer Things Club Playlist, a listing of all the music in the database</h1>
+
+<p> There are currently <%= @songs.count %> pieces of fine music enjoyed by the Club:<p>
+
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Artist</th>
+  </thead>
+
+  <tbody>
+    <% @songs.each do |song| %>
+      <tr>
+        <td><%= song.name %></td>
+        <td><%= song.artist %></td>
+        <td><a href="/songs/<%= song.slug %>"> details</a>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
