@@ -18,8 +18,8 @@ describe SongsController do
         click_button 'Log In'
 
         visit '/songs'
-        expect(page.body).to include(song1.name, song1.artist, song1.category)
-        expect(page.body).to include(song2.name, song2.artist, song2.category)
+        expect(page.body).to include(song1.name, song1.artist)
+        expect(page.body).to include(song2.name, song2.artist)
       end
     end
 
@@ -45,7 +45,7 @@ describe SongsController do
 
       expect(page.status_code).to eq(200)
       expect(page.body).to include("Delete Music")
-      expect(page.body).to include(song.name, song.artist, song.category)
+      expect(page.body).to include(song.name, song.artist)
       expect(page.body).to include("Edit Music")
     end
   end
@@ -101,7 +101,6 @@ describe SongsController do
         click_button 'Add Music'
 
         expect(Song.find_by(name: "")).to eq(nil)
-        expect(Song.find_by(category: "")).to eq(nil)
         expect(page.current_path).to eq("/songs/new")
 
         visit '/songs/new'
@@ -160,7 +159,7 @@ describe SongsController do
         visit "/songs/#{song.slug}/edit"
 
         expect(page.status_code).to eq(200)
-        expect(page.body).to include(song.name, song.artist, song.category)
+        expect(page.body).to include(song.name, song.artist)
       end
 
       it 'does not let a user edit a song object that they did not create' do
