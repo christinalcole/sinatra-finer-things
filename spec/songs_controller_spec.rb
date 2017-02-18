@@ -238,7 +238,7 @@ describe SongsController do
         click_button 'Log In'
 
         visit "/songs/#{song.slug}"
-        click_button 'Delete Song'
+        click_button 'Delete Music'
 
         expect(page.status_code).to eq(200)
         expect(Song.find_by(name: "My Song")).to eq(nil)
@@ -257,7 +257,7 @@ describe SongsController do
         click_button 'Log In'
 
         visit "/songs/#{song2.slug}"
-        click_button 'Delete Song'
+        click_button 'Delete Music'
 
         expect(page.status_code).to eq(200)
         expect(Song.find_by(name: "My Other Song")).to be_instance_of(Song)
