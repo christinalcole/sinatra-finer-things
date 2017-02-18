@@ -1,0 +1,18 @@
+song show page
+
+<h1>Music Details:</h1>
+
+<% if flash.has?(:message) %>
+  <p><%= flash[:message] %></p>
+<% end %>
+
+<h3><%= @song.name %> by <%= @song.artist %></h3><br>
+
+<p>This music is in the collection of <%= @song.users.count %> club members.</p>
+
+<a href="/songs/<%= @song.slug %>/edit">Edit Music Details</a>
+
+<form method="POST" action="/songs/<%= @song.slug %>/delete">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Music">
+</form>
