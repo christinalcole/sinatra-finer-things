@@ -75,4 +75,11 @@ class SongsController < ApplicationController
       redirect to "/songs/#{@song.slug}"
     end
   end
+
+  delete '/songs/:slug/remove' do
+    @song = Song.find_by_slug(params[:slug])
+    current_user.songs.delete(@song)
+    flash[:message] = "That music has been successfully removed from your collection"
+    redirect to "/users/#{current_user.slug}"
+  end
 end

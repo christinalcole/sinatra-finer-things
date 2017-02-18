@@ -32,6 +32,10 @@ user's show page
   <ol>
   <% @user.songs.each do |song| %>
     <li><%= song.name %> by <%=song.artist %></li>  <a href="/songs/<%= song.slug %>">details</a>
+    <form method="POST" action="/songs/<%= song.slug %>/remove">
+     <input type="hidden" name="_method" value="DELETE">
+     <input type="submit" value="remove music from collection">
+   </form>
   <% end %>
   <li>Add new music to your collection <a href="/songs/new">here</a></li>
   </ol>
