@@ -1,0 +1,14 @@
+song edit form
+
+<% if flash.has?(:message) %>
+  <p><%= flash[:message].uniq %></p>
+<% end %>
+
+<form method="POST" action="/songs/<%= @song.slug %>">
+  <input type="hidden" name="_method" value="PATCH">
+  <label>Title: </label>
+  <input type="text" name="song[name]" value="<%= @song.name %>">
+  <label>Author: </label>
+  <input type="text" name="song[artist]" value="<%= @song.artist %>">
+  <input type="submit" name="submit" value="Edit Music">
+</form>

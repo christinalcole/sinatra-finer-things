@@ -29,6 +29,15 @@ class SongsController < ApplicationController
     end
   end
 
+  get '/songs/:slug/edit' do
+    if is_logged_in?
+      @song = Song.find_by_slug(params[:slug])
+      erb :'songs/edit'
+    else
+      redirect to "/login"
+    end
+  end
+
   get '/songs/:slug' do
     if is_logged_in?
       @song = Song.find_by_slug(params[:slug])
