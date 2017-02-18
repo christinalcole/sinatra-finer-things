@@ -33,6 +33,7 @@ user's show page
   <% @user.songs.each do |song| %>
     <li><%= song.name %> by <%=song.artist %></li>  <a href="/songs/<%= song.slug %>">details</a>
   <% end %>
+  <li>Add new music to your collection <a href="/songs/new">here</a></li>
   </ol>
 <% end %>
 
