@@ -95,10 +95,10 @@ a {
 
 .dark-container {
   /*background-color: #270B6C;*/
-  height: 100%;
+  height:  calc(100%-(204px+22px)); /*204 = logo-box, 22 = footer*/
   width: 100%;
   margin: 20px auto;
-  display: flex;
+  text-align: center;
 }
 
 .clear {
@@ -110,6 +110,7 @@ a {
   background-color: #270B6C;
   line-height: 0.8;
   border: 5px groove #C8AB0B;
+  height: 204px;
 }
 
 #logo-box h1 {
@@ -168,6 +169,7 @@ button a:hover {
 
 #home-button {
   font-size: 3em;
+  margin: 50px 25px;
 }
 
 /***** Footer *****/
@@ -177,6 +179,7 @@ footer {
   margin: 0px 0;
   padding: 5px;
   text-align: center;
+  height: 22px;
 }
 
 footer a {
