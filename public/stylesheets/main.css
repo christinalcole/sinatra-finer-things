@@ -162,3 +162,18 @@ button a:hover {
 #home-button {
   font-size: 3em;
 }
+
+/***** Footer *****/
+footer {
+  background-color: #7690D2;
+  border: 5px groove ##284BA1;
+  margin: 0px 0;
+  padding: 5px;
+  text-align: center;
+}
+
+footer h6 {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 0.7em;
+  color: #284BA1;
+}
