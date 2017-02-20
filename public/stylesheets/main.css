@@ -83,6 +83,7 @@ input, select { vertical-align: middle; }
 
 /***** Global *****/
 body {
+  background-color: #270B6C;
   font-size: 100%;
   margin: 20px;
   padding: 20px;
@@ -90,7 +91,7 @@ body {
 }
 
 .dark-container {
-  background-color: #270B6C;
+  /*background-color: #270B6C;*/
   height: 100%;
   width: 100%;
   margin: 20px auto;
