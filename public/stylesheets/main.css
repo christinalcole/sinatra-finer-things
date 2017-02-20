@@ -101,13 +101,15 @@ body {
 /***** Logo *****/
 #logo-box {
   background-color: #270B6C;
-  line-height: 0.8
+  line-height: 0.8;
+  border: 5px groove #C8AB0B;
 }
 
 #logo-box h1 {
   font-family:'Cinzel Decorative', cursive;
   font-size: 6em;
   color: #C8AB0B;
+  text-shadow: -2px 3px 4px #9E8600;
   vertical-align: middle;
   text-align: left;
   padding: 30px;
