@@ -46,7 +46,6 @@ hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin:
 
 input, select { vertical-align: middle; }
 
-
 /* Write your CSS styles here */
 
 /* Palette color codes */
@@ -88,6 +87,10 @@ body {
   margin: 20px;
   padding: 20px;
   font-family: 'Open Sans', sans-serif;
+}
+
+a {
+  text-decoration: none;
 }
 
 .dark-container {
@@ -174,6 +177,14 @@ footer {
   margin: 0px 0;
   padding: 5px;
   text-align: center;
+}
+
+footer a {
+  color: #284BA1;
+}
+
+footer a:hover {
+  color: #FFEC82;
 }
 
 footer h6 {
