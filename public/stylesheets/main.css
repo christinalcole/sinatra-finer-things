@@ -98,6 +98,10 @@ body {
   display: flex;
 }
 
+.clear {
+  clear: both;
+}
+
 /***** Logo *****/
 #logo-box {
   background-color: #270B6C;
@@ -166,7 +170,7 @@ button a:hover {
 /***** Footer *****/
 footer {
   background-color: #7690D2;
-  border: 5px groove ##284BA1;
+  border: 5px groove #284BA1;
   margin: 0px 0;
   padding: 5px;
   text-align: center;
@@ -174,6 +178,6 @@ footer {
 
 footer h6 {
   font-family: 'Cinzel Decorative', cursive;
-  font-size: 0.7em;
+  font-size: 1em;
   color: #284BA1;
 }
