@@ -115,6 +115,7 @@ p {
 }
 
 .light-container {
+  height:  calc(100%-(204px+22px)); /*204 = logo-box, 22 = footer*/
   background-color: #F8F8F8;
   margin: 20px auto;
   border: 5px solid #284BA1;
