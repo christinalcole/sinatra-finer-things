@@ -17,7 +17,8 @@
       <tr>
         <td><%= book.name %> by <%= book.author %></td>
         <td><a href="/books/<%= book.slug %>">details</a></td>
-        <td><form method="POST" action="/books/<%= book.slug %>/remove">
+        <td>
+          <form method="POST" action="/books/<%= book.slug %>/remove">
               <input type="hidden" name="_method" value="DELETE">
               <input type="submit" value="remove book from collection">
             </form>
@@ -36,31 +37,53 @@
   <% if @user.songs.empty? %>
     <p>You don't have any music in your collection. Add one <a href="/songs/new">here</a></p>
   <% else %>
-    <ol>
-    <% @user.songs.each do |song| %>
-      <li><%= song.name %> by <%=song.artist %></li>  <a href="/songs/<%= song.slug %>">details</a>
-      <form method="POST" action="/songs/<%= song.slug %>/remove">
-       <input type="hidden" name="_method" value="DELETE">
-       <input type="submit" value="remove music from collection">
-     </form>
-    <% end %>
-    <li>Add new music to your collection <a href="/songs/new">here</a></li>
-    </ol>
+  <table>
+    <tbody>
+      <% @user.songs.each do |song| %>
+      <tr>
+        <td><%= song.name %> by <%= song.artist %></td>
+        <td><a href="/songs/<%= song.slug%>">details</a></td>
+        <td>
+          <form method="POST" action="/songs/<%= song.slug %>/remove">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="remove music from collection">
+          </form>
+        </td>
+      </tr>
+      <% end %>
+      <tr>
+        <td>Add new music to your collection</td>
+        <td><a href="/songs/new"><i class="fa fa-plus" aria-hidden="true"></i>     <i class="fa fa-music" aria-hidden="true"></i></a></td>
+      </tr>
+    </tbody>
+  </table>
   <% end %>
 
   <h3>Fine Art</h3>
   <% if @user.artworks.empty? %>
     <p>You don't have any art in your collection. Add one <a href="/artworks/new">here</a></p>
   <% else %>
-    <ol>
-    <% @user.artworks.each do |artwork| %>
-      <li><%= artwork.name %> by <%= artwork.artist %> (<%= artwork.category %>)</li>  <a href="/artworks/<%= artwork.slug %>">details</a>
-      <form method="POST" action="/artworks/<%= artwork.slug %>/remove">
-       <input type="hidden" name="_method" value="DELETE">
-       <input type="submit" value="remove art from collection">
-     </form>
-    <% end %>
-    <li>Add new art to your collection <a href="/artworks/new">here</a></li>
-    </ol>
+  <table>
+    <tbody>
+      <% @user.artworks.each do |artwork| %>
+      <tr>
+        <td><%= artwork.name %> by <%= artwork.artist %></td>
+        <td>(<%= artwork.category %>)</td>
+        <td><a href="/artworks/<%= artwork.slug %>">details</a></td>
+        <td>
+          <form method="POST" action="/artworks/<%= artwork.slug %>/remove">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="remove art from collection">
+          </form>
+        </td>
+      </tr>
+      <% end %>
+      <tr>
+        <td>Add new art to your collection</td>
+        <td></td>
+        <td><a href="/artworks/new"><i class="fa fa-plus" aria-hidden="true"></i>     <i class="fa fa-picture-o" aria-hidden="true"></i></td>
+      </tr>
+    </tbody>
+  </table>
   <% end %>
 </div>
