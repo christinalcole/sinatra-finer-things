@@ -200,6 +200,34 @@ button a:hover {
   padding: 5px;
 }
 
+input {
+  font-size: 1em;
+}
+
+input:focus, input:hover {
+  background-color: #FFEC82;
+}
+
+input#submit {
+  background-color: #C8AB0B;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
+  color: #FFEC82;
+  border: 2px solid #FFEC82;
+  border-radius: 10px;
+  margin: 5px;
+  /*margin: 0px 0px 25px 0px;*/
+  padding: 5px 10px;
+}
+
+input#submit:hover {
+  background-color: #FFEC82;
+  /*font-family: 'Open Sans', sans-serif;
+  font-size: 1em;*/
+  color: #9E8600;
+  border: 2px solid #9E8600;
+}
+
 
 /***** Footer *****/
 footer {
