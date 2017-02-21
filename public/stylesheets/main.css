@@ -184,6 +184,7 @@ nav li a {
   /*background-color: #BB6DD0;*/
   color: #520369;
   font-size: 1em;
+  font-weight: 600;
   text-align: center;
   padding: 14px 16px;
 }
@@ -193,10 +194,10 @@ nav li a:hover {
   color: #A32BC4;
 }
 
-nav:after {
+/*nav:after {
   content: "";
   clear: both;
-}
+}*/
 
 /***** Button *****/
 button {

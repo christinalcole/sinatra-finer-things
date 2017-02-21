@@ -1,58 +1,58 @@
-user's show page
-<h1>Welcome to Finer Things</h1>
-<h2>No paper, no plastic, and no work talk allowed</h2>
+<div class="light-container clear">
+  <h1>Welcome to Finer Things</h1>
 
-<%= @user.name %>'s Finer Things
+  <%= @user.name %>'s Finer Things
 
-<% if flash.has?(:message) %>
-  <p><%= flash[:message] %></p>
-<% end %>
-
-<h3>Fine Books</h3>
-<% if @user.books.empty? %>
-  <p>You don't have any books in your collection. Add one <a href="/books/new">here</a></p>
-<% else %>
-  <ol>
-  <% @user.books.each do |book| %>
-    <li><%= book.name %> by <%= book.author %>  <a href="/books/<%= book.slug %>">details</a>
-       <form method="POST" action="/books/<%= book.slug %>/remove">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="remove book from collection">
-      </form>
-    </li>
+  <% if flash.has?(:message) %>
+    <p><%= flash[:message] %></p>
   <% end %>
-  <li>Add a new book to your collection <a href="/books/new">here</a></li>
-  </ol>
-<% end %>
 
-<h3>Fine Music</h3>
-<% if @user.songs.empty? %>
-  <p>You don't have any music in your collection. Add one <a href="/songs/new">here</a></p>
-<% else %>
-  <ol>
-  <% @user.songs.each do |song| %>
-    <li><%= song.name %> by <%=song.artist %></li>  <a href="/songs/<%= song.slug %>">details</a>
-    <form method="POST" action="/songs/<%= song.slug %>/remove">
-     <input type="hidden" name="_method" value="DELETE">
-     <input type="submit" value="remove music from collection">
-   </form>
+  <h3>Fine Books</h3>
+  <% if @user.books.empty? %>
+    <p>You don't have any books in your collection. Add one <a href="/books/new">here</a></p>
+  <% else %>
+    <ol>
+    <% @user.books.each do |book| %>
+      <li><%= book.name %> by <%= book.author %>  <a href="/books/<%= book.slug %>">details</a>
+         <form method="POST" action="/books/<%= book.slug %>/remove">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="remove book from collection">
+        </form>
+      </li>
+    <% end %>
+    <li>Add a new book to your collection <a href="/books/new">here</a></li>
+    </ol>
   <% end %>
-  <li>Add new music to your collection <a href="/songs/new">here</a></li>
-  </ol>
-<% end %>
 
-<h3>Fine Art</h3>
-<% if @user.artworks.empty? %>
-  <p>You don't have any art in your collection. Add one <a href="/artworks/new">here</a></p>
-<% else %>
-  <ol>
-  <% @user.artworks.each do |artwork| %>
-    <li><%= artwork.name %> by <%= artwork.artist %> (<%= artwork.category %>)</li>  <a href="/artworks/<%= artwork.slug %>">details</a>
-    <form method="POST" action="/artworks/<%= artwork.slug %>/remove">
-     <input type="hidden" name="_method" value="DELETE">
-     <input type="submit" value="remove art from collection">
-   </form>
+  <h3>Fine Music</h3>
+  <% if @user.songs.empty? %>
+    <p>You don't have any music in your collection. Add one <a href="/songs/new">here</a></p>
+  <% else %>
+    <ol>
+    <% @user.songs.each do |song| %>
+      <li><%= song.name %> by <%=song.artist %></li>  <a href="/songs/<%= song.slug %>">details</a>
+      <form method="POST" action="/songs/<%= song.slug %>/remove">
+       <input type="hidden" name="_method" value="DELETE">
+       <input type="submit" value="remove music from collection">
+     </form>
+    <% end %>
+    <li>Add new music to your collection <a href="/songs/new">here</a></li>
+    </ol>
   <% end %>
-  <li>Add new art to your collection <a href="/artworks/new">here</a></li>
-  </ol>
-<% end %>
+
+  <h3>Fine Art</h3>
+  <% if @user.artworks.empty? %>
+    <p>You don't have any art in your collection. Add one <a href="/artworks/new">here</a></p>
+  <% else %>
+    <ol>
+    <% @user.artworks.each do |artwork| %>
+      <li><%= artwork.name %> by <%= artwork.artist %> (<%= artwork.category %>)</li>  <a href="/artworks/<%= artwork.slug %>">details</a>
+      <form method="POST" action="/artworks/<%= artwork.slug %>/remove">
+       <input type="hidden" name="_method" value="DELETE">
+       <input type="submit" value="remove art from collection">
+     </form>
+    <% end %>
+    <li>Add new art to your collection <a href="/artworks/new">here</a></li>
+    </ol>
+  <% end %>
+</div>
