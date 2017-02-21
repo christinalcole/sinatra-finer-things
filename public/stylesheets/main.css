@@ -162,23 +162,28 @@ p {
 /***** Navbar *****/
 nav {
   background-color: #BB6DD0;
-  font-size: 1em;
 }
 nav ul {
   list-style: none;
   margin: 5px 0px;
-  /*background-color: #BB6DD0;*/
-
+  overflow: hidden;
 }
 
 nav li {
   float: left;
+  border-right: 4px solid #270B6C;
+}
+
+nav li:last-child {
+  float: right;
+  border-right: none;
 }
 
 nav li a {
   display: block;
-  background-color: #BB6DD0;
-  color: #821E9F;
+  /*background-color: #BB6DD0;*/
+  color: #520369;
+  font-size: 1em;
   text-align: center;
   padding: 14px 16px;
 }
