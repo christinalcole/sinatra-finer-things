@@ -159,10 +159,44 @@ p {
   padding: 0 30px 30px 30px;
 }
 
+/***** Navbar *****/
+nav {
+  background-color: #BB6DD0;
+  font-size: 1em;
+}
+nav ul {
+  list-style: none;
+  margin: 5px 0px;
+  /*background-color: #BB6DD0;*/
+
+}
+
+nav li {
+  float: left;
+}
+
+nav li a {
+  display: block;
+  background-color: #BB6DD0;
+  color: #821E9F;
+  text-align: center;
+  padding: 14px 16px;
+}
+
+nav li a:hover {
+  background-color: #520369;
+  color: #A32BC4;
+}
+
+nav:after {
+  content: "";
+  clear: both;
+}
+
 /***** Button *****/
 button {
   background-color: #C8AB0B;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Cinzel Decorative', cursive;
   font-size: 1em;
   color: #FFEC82;
   border: 2px solid #FFEC82;
