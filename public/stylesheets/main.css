@@ -188,6 +188,7 @@ button a:hover {
 }
 
 #home-button {
+  font-family: 'Cinzel Decorative', cursive;
   font-size: 3em;
   margin: 50px 25px;
 }
