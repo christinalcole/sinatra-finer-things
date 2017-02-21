@@ -1,13 +1,13 @@
 <div class="light-container clear">
-  
 
-  <%= @user.name %>'s Finer Things
+
+  <h2 id="view-title"><%= @user.name %>'s Finer Things</h2>
 
   <% if flash.has?(:message) %>
     <p><%= flash[:message] %></p>
   <% end %>
 
-  <h3>Fine Books</h3>
+  <h3 class="table-title">Fine Books</h3>
   <% if @user.books.empty? %>
     <p>You don't have any books in your collection. Add one <a href="/books/new">here</a></p>
   <% else %>
@@ -33,7 +33,7 @@
   </table>
   <% end %>
 
-  <h3>Fine Music</h3>
+  <h3 class="table-title">Fine Music</h3>
   <% if @user.songs.empty? %>
     <p>You don't have any music in your collection. Add one <a href="/songs/new">here</a></p>
   <% else %>
@@ -59,7 +59,7 @@
   </table>
   <% end %>
 
-  <h3>Fine Art</h3>
+  <h3 class="table-title">Fine Art</h3>
   <% if @user.artworks.empty? %>
     <p>You don't have any art in your collection. Add one <a href="/artworks/new">here</a></p>
   <% else %>

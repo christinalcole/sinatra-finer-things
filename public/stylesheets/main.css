@@ -125,6 +125,11 @@ p {
   clear: both;
 }
 
+#view-title {
+  font-family: 'Cinzel Decorative', cursive;
+  color: #153586;
+}
+
 #flash-message {
   color: #A32BC4;
   font-size:1.1em;
@@ -305,7 +310,6 @@ input#submit:hover {
 }
 
 /***** Table *****/
-
 table {
   width: 50%;
 }
@@ -314,6 +318,9 @@ td {
   padding: 7px 10px 10px 10px;
 }
 
+.table-title {
+  font-family: 'Cinzel Decorative', cursive;
+}
 /***** Footer *****/
 footer {
   background-color: #7690D2;
