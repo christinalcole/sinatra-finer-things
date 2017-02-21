@@ -11,17 +11,25 @@
   <% if @user.books.empty? %>
     <p>You don't have any books in your collection. Add one <a href="/books/new">here</a></p>
   <% else %>
-    <ol>
-    <% @user.books.each do |book| %>
-      <li><%= book.name %> by <%= book.author %>  <a href="/books/<%= book.slug %>">details</a>
-         <form method="POST" action="/books/<%= book.slug %>/remove">
-          <input type="hidden" name="_method" value="DELETE">
-          <input type="submit" value="remove book from collection">
-        </form>
-      </li>
-    <% end %>
-    <li>Add a new book to your collection <a href="/books/new">here</a></li>
-    </ol>
+  <table>
+    <tbody>
+      <% @user.books.each do |book| %>
+      <tr>
+        <td><%= book.name %> by <%= book.author %></td>
+        <td><a href="/books/<%= book.slug %>">details</a></td>
+        <td><form method="POST" action="/books/<%= book.slug %>/remove">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" value="remove book from collection">
+            </form>
+          </td>
+      </tr>
+      <% end %>
+      <tr>
+        <td>Add a new book to your collection</td>
+        <td><a href="/books/new"><i class="fa fa-plus" aria-hidden="true"></i>     <i class="fa fa-book" aria-hidden="true"></i></a></td>
+      </tr>
+    </tbody>
+  </table>
   <% end %>
 
   <h3>Fine Music</h3>
