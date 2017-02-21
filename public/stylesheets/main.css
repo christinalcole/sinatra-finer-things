@@ -97,6 +97,10 @@ h2 {
   font-size: 3em;
 }
 
+h3 {
+  font-size: 1.5em;
+}
+
 p {
   font-size: 1em;
   color: #000;
@@ -167,6 +171,11 @@ button {
   padding: 5px 10px;
 }
 
+.inline {
+  font-size: 0.9em;
+  padding: 2px 8px;
+}
+
 button:hover {
   background-color: #FFEC82;
   /*font-family: 'Open Sans', sans-serif;
@@ -213,8 +222,15 @@ button a:hover {
   padding: 5px 10px;
 }
 
+.form-container h3 {
+  font-family: 'Cinzel Decorative', cursive;
+  color: #153586;
+  margin: 10px 0px 2px 2px;
+  padding: 5px 10px;
+}
+
 .form-container p {
-  line-height: 1.5em;
+  /*line-height: 1.5em;*/
   font-size: 0.9em;
   color: #3860C6;
 }
