@@ -124,6 +124,10 @@ p {
   font-size:1.1em;
   margin: 5px;
 }
+ #flash-message-link {
+   color: #A32BC4;
+   text-decoration: underline;
+ }
 
 /***** Logo *****/
 #logo-box {
@@ -228,8 +232,8 @@ input:focus, input:hover {
 
 input#submit {
   background-color: #C8AB0B;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.1em;
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 1.2em;
   color: #FFEC82;
   border: 2px solid #FFEC82;
   border-radius: 10px;
