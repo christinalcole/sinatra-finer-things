@@ -1,13 +1,15 @@
-<h1>Join the Finer Things Club</h1>
+<div class="form-container">
+  <h2>Join the Finer Things Club</h2>
 
-<% if flash.has?(:message) %>
-  <p><%= flash[:message] %></p>
-<% end %>
+  <% if flash.has?(:message) %>
+    <p><%= flash[:message] %></p>
+  <% end %>
 
-<form method=POST action='/signup'>
-  <label>Your Username: </label>
-  <input type="text" name="user[name]" placeholder="name">
-  <label>Your password: </label>
-  <input type="text" name="user[password]" placeholder="password">
-  <input type="submit" name="Sign Up" value="Sign Up">
-</form>
+  <form method=POST action='/signup'>
+    <label>Your Username: </label>
+    <input type="text" name="user[name]" placeholder="name">
+    <label>Your password: </label>
+    <input type="text" name="user[password]" placeholder="password">
+    <input type="submit" name="Sign Up" value="Sign Up">
+  </form>
+</div>

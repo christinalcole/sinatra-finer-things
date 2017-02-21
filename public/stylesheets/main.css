@@ -93,12 +93,25 @@ a {
   text-decoration: none;
 }
 
+h2 {
+  font-size: 3em;
+}
+
+p {
+  font-size: 1em;
+}
+
 .dark-container {
   /*background-color: #270B6C;*/
   height:  calc(100%-(204px+22px)); /*204 = logo-box, 22 = footer*/
   width: 100%;
   margin: 20px auto;
   text-align: center;
+}
+
+.light-container {
+  background-color: #F8F8F8;
+  margin: 20px auto;
 }
 
 .clear {
@@ -171,6 +184,22 @@ button a:hover {
   font-size: 3em;
   margin: 50px 25px;
 }
+
+/***** Form *****/
+.form-container {
+  background-color: #F8F8F8;
+  margin: 20px auto;
+  padding: 20px;
+  line-height: 1.5em;
+}
+
+.form-container h2 {
+  font-family: 'Cinzel Decorative', cursive;
+  color: #153586;
+  margin: 0px 2px 35px 2px;
+  padding: 5px;
+}
+
 
 /***** Footer *****/
 footer {
