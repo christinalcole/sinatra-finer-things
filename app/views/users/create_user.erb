@@ -1,15 +1,18 @@
 <div class="form-container">
-  <h2>Join the Finer Things Club</h2>
+  <h2>Join the Club</h2>
 
   <% if flash.has?(:message) %>
-    <p><%= flash[:message] %></p>
+    <% flash[:message].uniq.each do |message| %>
+    <p id="flash-message"><%= message %></p>
+    <% end %>
   <% end %>
 
   <form method=POST action='/signup'>
-    <label>Your Username: </label>
-    <input type="text" name="user[name]" placeholder="name">
+    <label>Your username: </label>
+    <input type="text" name="user[name]" placeholder="name"><br>
+    <p>Your username will be your login name: two words (e.g., first and last names) are permitted.</p><br>
     <label>Your password: </label>
-    <input type="text" name="user[password]" placeholder="password">
+    <input type="text" name="user[password]" placeholder="password"><br></br>
     <input type="submit" name="Sign Up" id="submit" value="Sign Up">
   </form>
 </div>

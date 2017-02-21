@@ -99,6 +99,7 @@ h2 {
 
 p {
   font-size: 1em;
+  color: #000;
 }
 
 .dark-container {
@@ -116,6 +117,12 @@ p {
 
 .clear {
   clear: both;
+}
+
+#flash-message {
+  color: #A32BC4;
+  font-size:1.1em;
+  margin: 5px;
 }
 
 /***** Logo *****/
@@ -188,6 +195,7 @@ button a:hover {
 /***** Form *****/
 .form-container {
   background-color: #F8F8F8;
+  border: 5px solid #284BA1;
   margin: 20px auto;
   padding: 20px;
   line-height: 1.5em;
@@ -196,10 +204,19 @@ button a:hover {
 .form-container h2 {
   font-family: 'Cinzel Decorative', cursive;
   color: #153586;
-  margin: 0px 2px 35px 2px;
-  padding: 5px;
+  margin: 10px 2px 35px 2px;
+  padding: 5px 10px;
 }
 
+.form-container p {
+  line-height: 1.5em;
+  font-size: 0.9em;
+  color: #3860C6;
+}
+
+form {
+  margin: 5px;
+}
 input {
   font-size: 1em;
 }
@@ -211,19 +228,15 @@ input:focus, input:hover {
 input#submit {
   background-color: #C8AB0B;
   font-family: 'Open Sans', sans-serif;
-  font-size: 1em;
+  font-size: 1.1em;
   color: #FFEC82;
   border: 2px solid #FFEC82;
   border-radius: 10px;
-  margin: 5px;
-  /*margin: 0px 0px 25px 0px;*/
   padding: 5px 10px;
 }
 
 input#submit:hover {
   background-color: #FFEC82;
-  /*font-family: 'Open Sans', sans-serif;
-  font-size: 1em;*/
   color: #9E8600;
   border: 2px solid #9E8600;
 }
