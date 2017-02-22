@@ -125,7 +125,7 @@ p {
   clear: both;
 }
 
-#view-title {
+.view-title {
   font-family: 'Cinzel Decorative', cursive;
   color: #153586;
   margin: 10px 2px 35px 2px;
@@ -350,6 +350,7 @@ td {
   background-color: #153586;
   font-family: 'Cinzel Decorative', cursive;
   color: #7690D2;
+  margin: 2px;
   padding: 5px 10px;
 }
 /***** Footer *****/
