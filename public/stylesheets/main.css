@@ -321,6 +321,15 @@ input#submit:hover {
   border: 2px solid #9E8600;
 }
 
+input#table-submit {
+  background-color: #9E8600;
+  font-family: 'Open Sans', sans-serif;
+  color: #FFE031;
+  border: 2px solid #FFE031;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
 /***** Table *****/
 table {
   width: 50%;

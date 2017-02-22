@@ -20,7 +20,7 @@
         <td>
           <form method="POST" action="/books/<%= book.slug %>/remove">
               <input type="hidden" name="_method" value="DELETE">
-              <input type="submit" value="remove book from collection">
+              <input type="submit" id="table-submit" value="remove book from collection">
             </form>
           </td>
       </tr>
