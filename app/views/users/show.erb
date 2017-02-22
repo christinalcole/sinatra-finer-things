@@ -27,7 +27,8 @@
       <% end %>
       <tr>
         <td>Add a new book to your collection</td>
-        <td><a href="/books/new"><i class="fa fa-plus" aria-hidden="true"></i>     <i class="fa fa-book" aria-hidden="true"></i></a></td>
+        <td><button class="table-button" id="fawe-button"><a href="/books/new"><i class="fa fa-plus" aria-hidden="true"></i>     <i class="fa fa-book" aria-hidden="true"></i></a></button></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -42,18 +43,18 @@
       <% @user.songs.each do |song| %>
       <tr>
         <td><%= song.name %> by <%= song.artist %></td>
-        <td><a href="/songs/<%= song.slug%>">details</a></td>
+        <td><button class="table-button"><a href="/songs/<%= song.slug%>">details</a></td></button>
         <td>
           <form method="POST" action="/songs/<%= song.slug %>/remove">
             <input type="hidden" name="_method" value="DELETE">
-            <input type="submit" value="remove music from collection">
+            <input type="submit" id="table-submit" value="remove music from collection">
           </form>
         </td>
       </tr>
       <% end %>
       <tr>
         <td>Add new music to your collection</td>
-        <td><a href="/songs/new"><i class="fa fa-plus" aria-hidden="true"></i>     <i class="fa fa-music" aria-hidden="true"></i></a></td>
+        <td><button class="table-button" id="fawe-button"><a href="/songs/new"><i class="fa fa-plus" aria-hidden="true"></i>     <i class="fa fa-music" aria-hidden="true"></i></a></button></td>
       </tr>
     </tbody>
   </table>
@@ -69,11 +70,11 @@
       <tr>
         <td><%= artwork.name %> by <%= artwork.artist %></td>
         <td>(<%= artwork.category %>)</td>
-        <td><a href="/artworks/<%= artwork.slug %>">details</a></td>
+        <td><button class="table-button"><a href="/artworks/<%= artwork.slug %>">details</a></td></button>
         <td>
           <form method="POST" action="/artworks/<%= artwork.slug %>/remove">
             <input type="hidden" name="_method" value="DELETE">
-            <input type="submit" value="remove art from collection">
+            <input type="submit" id="table-submit" value="remove art from collection">
           </form>
         </td>
       </tr>
@@ -81,7 +82,7 @@
       <tr>
         <td>Add new art to your collection</td>
         <td></td>
-        <td><a href="/artworks/new"><i class="fa fa-plus" aria-hidden="true"></i>     <i class="fa fa-picture-o" aria-hidden="true"></i></td>
+        <td><button class="table-button" id="fawe-button"><a href="/artworks/new"><i class="fa fa-plus" aria-hidden="true"></i>     <i class="fa fa-picture-o" aria-hidden="true"></i></button></td>
       </tr>
     </tbody>
   </table>

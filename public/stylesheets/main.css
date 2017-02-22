@@ -255,6 +255,10 @@ button a:hover {
   margin: 50px 25px;
 }
 
+#fawe-button {
+  width: 70px;
+}
+
 .table-button {
   background-color: #9E8600;
   font-family: 'Open Sans', sans-serif;
@@ -338,12 +342,16 @@ input#table-submit:hover {
 
 /***** Table *****/
 table {
-  width: 50%;
+  width: 75%;
   margin: 10px;
 }
 
 td {
   padding: 7px 10px 10px 10px;
+}
+
+tr {
+  border-bottom: 2px solid #E8E8E8;
 }
 
 .table-title {
@@ -353,6 +361,7 @@ td {
   margin: 2px;
   padding: 5px 10px;
 }
+
 /***** Footer *****/
 footer {
   background-color: #7690D2;
