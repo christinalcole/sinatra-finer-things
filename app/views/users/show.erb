@@ -16,7 +16,7 @@
       <% @user.books.each do |book| %>
       <tr>
         <td><%= book.name %> by <%= book.author %></td>
-        <td><a href="/books/<%= book.slug %>">details</a></td>
+        <td><button class="table-button"><a href="/books/<%= book.slug %>">details</a></button></td>
         <td>
           <form method="POST" action="/books/<%= book.slug %>/remove">
               <input type="hidden" name="_method" value="DELETE">

@@ -128,6 +128,8 @@ p {
 #view-title {
   font-family: 'Cinzel Decorative', cursive;
   color: #153586;
+  margin: 10px 2px 35px 2px;
+  padding: 5px 10px;
 }
 
 #flash-message {
@@ -253,6 +255,16 @@ button a:hover {
   margin: 50px 25px;
 }
 
+.table-button {
+  background-color: #9E8600;
+  font-family: 'Open Sans', sans-serif;
+  /*color: #7690D2;*/
+  border-color: #FFE031;
+}
+
+.table-button a{
+  color: #FFE031;
+}
 /***** Form *****/
 .form-container {
   background-color: #F8F8F8;
@@ -312,6 +324,7 @@ input#submit:hover {
 /***** Table *****/
 table {
   width: 50%;
+  margin: 10px;
 }
 
 td {
@@ -319,7 +332,10 @@ td {
 }
 
 .table-title {
+  background-color: #153586;
   font-family: 'Cinzel Decorative', cursive;
+  color: #7690D2;
+  padding: 5px 10px;
 }
 /***** Footer *****/
 footer {
