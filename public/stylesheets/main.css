@@ -318,7 +318,7 @@ input#submit {
 input#submit:hover {
   background-color: #FFEC82;
   color: #9E8600;
-  border: 2px solid #9E8600;
+  border: 2px solid #9E8600; /* could be replaced with border-color: #9E8600; ? */
 }
 
 input#table-submit {
@@ -328,6 +328,12 @@ input#table-submit {
   border: 2px solid #FFE031;
   border-radius: 10px;
   padding: 5px 10px;
+}
+
+input#table-submit:hover {
+  background-color: #FFEC82;
+  color: #9E8600;
+  border-color: #9E8600;
 }
 
 /***** Table *****/
