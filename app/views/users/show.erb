@@ -12,6 +12,11 @@
     <p>You don't have any books in your collection. Add one <a href="/books/new">here</a></p>
   <% else %>
   <table>
+    <thead>
+      <th class="tcol-1"></th>
+      <th class="tcol-2"></th>
+      <th class="tcol-3"></th>
+    </thead>
     <tbody>
       <% @user.books.each do |book| %>
       <tr>
@@ -39,6 +44,11 @@
     <p>You don't have any music in your collection. Add one <a href="/songs/new">here</a></p>
   <% else %>
   <table>
+    <thead>
+      <th class="tcol-1"></th>
+      <th class="tcol-2"></th>
+      <th class="tcol-3"></th>
+    </thead>
     <tbody>
       <% @user.songs.each do |song| %>
       <tr>
@@ -65,11 +75,15 @@
     <p>You don't have any art in your collection. Add one <a href="/artworks/new">here</a></p>
   <% else %>
   <table>
+    <thead>
+      <th class="tcol-1"></th>
+      <th class="tcol-2"></th>
+      <th class="tcol-3"></th>
+    </thead>
     <tbody>
       <% @user.artworks.each do |artwork| %>
       <tr>
         <td><%= artwork.name %> by <%= artwork.artist %></td>
-        <td>(<%= artwork.category %>)</td>
         <td><button class="table-button"><a href="/artworks/<%= artwork.slug %>">details</a></td></button>
         <td>
           <form method="POST" action="/artworks/<%= artwork.slug %>/remove">
@@ -81,7 +95,6 @@
       <% end %>
       <tr>
         <td>Add new art to your collection</td>
-        <td></td>
         <td><button class="table-button" id="fawe-button"><a href="/artworks/new"><i class="fa fa-plus" aria-hidden="true"></i>     <i class="fa fa-picture-o" aria-hidden="true"></i></button></td>
       </tr>
     </tbody>

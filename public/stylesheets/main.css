@@ -342,8 +342,20 @@ input#table-submit:hover {
 
 /***** Table *****/
 table {
-  width: 75%;
+  width: 900px;
   margin: 10px;
+}
+
+th.tcol-1 {
+  width: 65%
+}
+
+th.tcol-2 {
+  width: 10%
+}
+
+th.tcol-3 {
+  width: 25%
 }
 
 td {
