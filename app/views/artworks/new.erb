@@ -1,19 +1,23 @@
-<h1>Add a new piece of art to your Finer Things collection</h1>
+<div class="form-container clear">
+  <h2>Add new art to your collection</h2>
 
-<% if flash.has?(:message) %>
-  <p><%= flash[:message].uniq %></p>
-<% end %>
+  <% if flash.has?(:message) %>
+    <p><%= flash[:message].uniq %></p>
+  <% end %>
 
-<form method="POST" action="/artworks">
-  <label>Name: </label>
-  <input type="text" name="artwork[name]" placeholder="artwork name">
-  <label>Artist: </label>
-  <input type="text" name="artwork[artist]" placeholder="artist"><br></br>
-  <label>Category: </label>
-    <% @artworks.categories.each do |category| %>
-      <input type="checkbox" name="artwork[category]" value="<%= category %>"><%= category %></input>
-    <% end %><br></br>
-  <label>Or create a new category: </label>
-  <input type="text" name="category"><br></br>
-  <input type="submit" name="submit" value="Add Art">
-</form>
+  <form method="POST" action="/artworks">
+    <label class="title">Name: </label>
+    <input type="text" name="artwork[name]" placeholder="artwork name"><br>
+    <label class="title">Artist: </label>
+    <input type="text" name="artwork[artist]" placeholder="artist"><br></br>
+    <label class="title">Category: </label>
+      <% @artworks.categories.each do |category| %>
+        <input type="checkbox" name="artwork[category]" value="<%= category %>"><%= category %></input>
+      <% end %><br></br>
+    <label>Or create a new category: </label>
+    <input type="text" name="category"><br></br>
+    <div class="submit">
+      <input type="submit" name="submit" id="submit" value="Add Art">
+    </div>
+  </form>
+</div>
