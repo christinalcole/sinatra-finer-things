@@ -2,7 +2,7 @@
   <h2>Add new art to your collection</h2>
 
   <% if flash.has?(:message) %>
-    <p><%= flash[:message].uniq %></p>
+    <p id="flash-message"><%= flash[:message].uniq %></p>
   <% end %>
 
   <form method="POST" action="/artworks">
