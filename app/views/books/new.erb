@@ -1,13 +1,17 @@
-<h1>Add a new book to your Finer Things collection</h1>
+<div class="form-container">
+  <h2>Add a new book to your collection</h2>
 
-<% if flash.has?(:message) %>
-  <p><%= flash[:message].uniq %></p>
-<% end %>
+  <% if flash.has?(:message) %>
+    <p><%= flash[:message].uniq %></p>
+  <% end %>
 
-<form method="POST" action="/books">
-  <label>Title: </label>
-  <input type="text" name="book[name]" placeholder="title">
-  <label>Author: </label>
-  <input type="text" name="book[author]" placeholder="author">
-  <input type="submit" name="submit" value="Add Book">
-</form>
+  <form method="POST" action="/books">
+    <label class="title">Title: </label>
+    <input type="text" name="book[name]" placeholder="title"><br>
+    <label class="title">Author: </label>
+    <input type="text" name="book[author]" placeholder="author"><br></br>
+    <div class="submit">
+      <input type="submit" id="submit" name="submit" value="Add Book">
+    </div>
+  </form>
+</div>

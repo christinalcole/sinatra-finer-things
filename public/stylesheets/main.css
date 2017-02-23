@@ -304,6 +304,18 @@ button a:hover {
   color: #3860C6;
 }
 
+.title {
+  float: left;
+  width: 100px;
+  text-align: right;
+  padding-right: 10px;
+}
+
+.submit {
+  width: 285px;
+  text-align: right;
+}
+
 form {
   margin: 5px;
 }
