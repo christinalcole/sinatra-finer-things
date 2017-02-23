@@ -1,18 +1,20 @@
-individual book show page
+<div class="light-container clear">
+  <h3 class="table-title">Book Details</h3>
 
-<h1>Book Details:</h1>
+  <% if flash.has?(:message) %>
+    <p><%= flash[:message] %></p>
+  <% end %>
 
-<% if flash.has?(:message) %>
-  <p><%= flash[:message] %></p>
-<% end %>
+  <br>
 
-<h3><%= @book.name %> by <%= @book.author %></h3><br>
+  <h3><%= @book.name %> by <%= @book.author %></h3>
 
-<p>This book is in the collection of <%= @book.users.count %> club members.</p>
+  <p>This book is in the collection of <%= @book.users.count %> club member(s).</p>
 
-<a href="/books/<%= @book.slug %>/edit">Edit Book Details</a>
+  <button class="table-button"><a href="/books/<%= @book.slug %>/edit">Edit Book Details</a></button>
 
-<form method="POST" action="/books/<%= @book.slug %>/delete">
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete Book">
-</form>
+  <form method="POST" action="/books/<%= @book.slug %>/delete">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" id="table-submit" value="Delete Book">
+  </form>
+</div>
