@@ -104,6 +104,7 @@ h3 {
 p {
   font-size: 1em;
   color: #000;
+  margin: 10px;
 }
 
 .dark-container {
@@ -135,7 +136,7 @@ p {
 #flash-message {
   color: #A32BC4;
   font-size:1.1em;
-  margin: 5px;
+  margin: 5px 5px 25px 5px;
 }
  #flash-message-link {
    color: #A32BC4;

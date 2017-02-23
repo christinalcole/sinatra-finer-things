@@ -2,8 +2,7 @@
   <h2>Log In to enter the Club</h2>
 
   <% if flash.has?(:message) %>
-    <p id="flash-message"><%= flash[:message] %></p>
-    <p id="flash-message">If you don't have an account, sign up <a href="/signup" id="flash-message-link">here.</a></p>
+    <p id="flash-message"><%= flash[:message] %>  If you don't have an account, sign up <a href="/signup" id="flash-message-link">here.</a></p>
   <% end %>
 
   <form method=POST action='/login'>
