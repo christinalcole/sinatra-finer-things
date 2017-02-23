@@ -1,13 +1,17 @@
-<h1>Add new music to your Finer Things collection</h1>
+<div class="form-container clear">
+  <h2>Add new music to your collection</h2>
 
-<% if flash.has?(:message) %>
-  <p><%= flash[:message].uniq %></p>
-<% end %>
+  <% if flash.has?(:message) %>
+    <p><%= flash[:message].uniq %></p>
+  <% end %>
 
-<form method="POST" action="/songs">
-  <label>Name: </label>
-  <input type="text" name="song[name]" placeholder="song name">
-  <label>Artist: </label>
-  <input type="text" name="song[artist]" placeholder="artist">
-  <input type="submit" name="submit" value="Add Music">
-</form>
+  <form method="POST" action="/songs">
+    <label class="title">Name: </label>
+    <input type="text" name="song[name]" placeholder="song name"><br>
+    <label class="title">Artist: </label>
+    <input type="text" name="song[artist]" placeholder="artist"><br></br>
+    <div class="submit">
+      <input type="submit" name="submit" id="submit" value="Add Music">
+    </div>
+  </form>
+</div>
