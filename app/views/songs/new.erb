@@ -2,7 +2,9 @@
   <h2>Add new music to your collection</h2>
 
   <% if flash.has?(:message) %>
-    <p id="flash-message"><%= flash[:message].uniq %></p>
+    <% flash[:message].uniq.each do |message| %>
+    <p id="flash-message"><%= message %>.</p>
+    <% end %>
   <% end %>
 
   <form method="POST" action="/songs">
