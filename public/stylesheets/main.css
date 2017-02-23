@@ -93,6 +93,11 @@ a {
   text-decoration: none;
 }
 
+a.add-link {
+  color: #9E8600;
+  text-decoration: underline;
+}
+
 h2 {
   font-size: 3em;
 }

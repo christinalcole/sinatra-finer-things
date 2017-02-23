@@ -9,7 +9,7 @@
 
   <h3 class="table-title">Fine Books</h3>
   <% if @user.books.empty? %>
-    <p>You don't have any books in your collection. Add one <a href="/books/new">here</a></p>
+    <p>You don't have any books in your collection. Add one <a class="add-link" href="/books/new">here</a></p>
   <% else %>
   <table>
     <thead>
@@ -41,7 +41,7 @@
 
   <h3 class="table-title">Fine Music</h3>
   <% if @user.songs.empty? %>
-    <p>You don't have any music in your collection. Add one <a href="/songs/new">here</a></p>
+    <p>You don't have any music in your collection. Add one <a class="add-link" href="/songs/new">here</a></p>
   <% else %>
   <table>
     <thead>
@@ -73,7 +73,7 @@
 
   <h3 class="table-title">Fine Art</h3>
   <% if @user.artworks.empty? %>
-    <p>You don't have any art in your collection. Add one <a href="/artworks/new">here</a></p>
+    <p>You don't have any art in your collection. Add one <a class="add-link" href="/artworks/new">here</a></p>
   <% else %>
   <table>
     <thead>
