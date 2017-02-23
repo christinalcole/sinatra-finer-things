@@ -133,7 +133,7 @@ p {
   clear: both;
 }
 
-.view-title {
+.title-1 {
   font-family: 'Cinzel Decorative', cursive;
   color: #153586;
   margin: 10px 2px 35px 2px;
@@ -391,7 +391,7 @@ tr {
   border-bottom: 2px solid #E8E8E8;
 }
 
-.table-title {
+.title-2 {
   background-color: #153586;
   font-family: 'Cinzel Decorative', cursive;
   color: #7690D2;
