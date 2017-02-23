@@ -1,18 +1,20 @@
-users index page
-<h1>All the Members of the Finer Things Club</h1>
+<div class="light-container clear">
+  users index page
+  <h1>The Finer Things Club Member Directory</h1>
 
-<p> There are currently <%= @users.count %> members in the Club:<p>
+  <p> There are currently <%= @users.count %> members in the Club:<p>
 
-<table>
-  <thead>
-    <th>Member Username</th>
-  </thead>
+  <table>
+    <thead>
+      <th>Member Username</th>
+    </thead>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

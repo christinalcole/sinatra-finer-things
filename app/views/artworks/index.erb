@@ -1,27 +1,29 @@
-artworks index page
-<h1>The Finer Things Club Gallery, a listing of all the works of art in the database</h1>
+<div class="light-container clear">
+  artworks index page
+  <h1>The Finer Things Club Gallery, a listing of all the works of art in the database</h1>
 
-<p> There are currently <%= @artworks.count %> pieces of art in the Club's gallery:<p>
+  <p> There are currently <%= @artworks.count %> pieces of art in the Club's gallery:<p>
 
-  <% if flash.has?(:message) %>
-    <p><%= flash[:message] %></p>
-  <% end %>
-
-<table>
-  <thead>
-    <th>Name</th>
-    <th>Artist</th>
-    <th>Type of Art</th>
-  </thead>
-
-  <tbody>
-    <% @artworks.each do |art| %>
-      <tr>
-        <td><%= art.name %></td>
-        <td><%= art.artist %></td>
-        <td><%= art.category %></td>
-        <td><a href="/artworks/<%= art.slug %>"> details</a>
-      </tr>
+    <% if flash.has?(:message) %>
+      <p id="flash-message"><%= flash[:message] %></p>
     <% end %>
-  </tbody>
-</table>
+
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>Artist</th>
+      <th>Type of Art</th>
+    </thead>
+
+    <tbody>
+      <% @artworks.each do |art| %>
+        <tr>
+          <td><%= art.name %></td>
+          <td><%= art.artist %></td>
+          <td><%= art.category %></td>
+          <td><button class="table-button"<a href="/artworks/<%= art.slug %>"> details</a></button>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
