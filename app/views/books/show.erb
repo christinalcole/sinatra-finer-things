@@ -11,7 +11,7 @@
 
   <p>This book is in the collection of <%= @book.users.count %> club member(s).</p>
 
-  <button class="table-button"><a href="/books/<%= @book.slug %>/edit">Edit Book Details</a></button>
+  <button class="button-1"><a href="/books/<%= @book.slug %>/edit">Edit Book Details</a></button>
 
   <form method="POST" action="/books/<%= @book.slug %>/delete">
     <input type="hidden" name="_method" value="delete">

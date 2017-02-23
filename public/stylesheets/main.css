@@ -267,14 +267,14 @@ button a:hover {
   width: 70px;
 }
 
-.table-button {
+.button-1 {
   background-color: #9E8600;
   font-family: 'Open Sans', sans-serif;
   /*color: #7690D2;*/
   border-color: #FFE031;
 }
 
-.table-button a{
+.button-1 a{
   color: #FFE031;
 }
 /***** Form *****/
@@ -316,6 +316,11 @@ button a:hover {
 .submit {
   width: 285px;
   text-align: right;
+}
+
+.submit-2 {
+  float: right;
+  width: 1055px;
 }
 
 form {
