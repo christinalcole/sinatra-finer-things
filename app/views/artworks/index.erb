@@ -1,8 +1,7 @@
 <div class="light-container clear">
-  artworks index page
-  <h1>The Finer Things Club Gallery, a listing of all the works of art in the database</h1>
+  <h3 class="title-2">The Finer Things Club Gallery, a listing of all the works of art in the database</h3>
 
-  <p> There are currently <%= @artworks.count %> pieces of art in the Club's gallery:<p>
+  <p> There are currently <%= @artworks.count %> pieces of fine art in the Club's gallery:<p><br>
 
     <% if flash.has?(:message) %>
       <p id="flash-message"><%= flash[:message] %></p>
