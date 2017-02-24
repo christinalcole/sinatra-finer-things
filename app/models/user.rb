@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   validates :name, :password, presence: true
+  validates :name, exclusion: {in: ["Andy Bernard"], message: "...Nope...you still can't join the Finer Things Club, Andy"}
   has_secure_password
 
   has_many :user_books
