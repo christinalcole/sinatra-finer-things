@@ -12,9 +12,10 @@
   <p>This book is in the collection of <%= @book.users.count %> club member(s).</p>
 
   <button class="button-1"><a href="/books/<%= @book.slug %>/edit">Edit Book Details</a></button>
-
-  <form method="POST" action="/books/<%= @book.slug %>/delete">
-    <input type="hidden" name="_method" value="delete">
-    <input type="submit" id="submit-2" value="Delete Book">
-  </form>
+  <div class="submit-2">
+    <form method="POST" action="/books/<%= @book.slug %>/delete">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" id="submit-2" value="Delete Book">
+    </form>
+  </div>
 </div>
