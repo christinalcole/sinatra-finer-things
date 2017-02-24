@@ -1,20 +1,26 @@
-artwork edit form
+<div class="light-container clear">
+  <h3 class="title-2">Edit art details below</h3><br>
 
-<% if flash.has?(:message) %>
-  <p><%= flash[:message].uniq %></p>
-<% end %>
+  <% if flash.has?(:message) %>
+  <% flash[:message].uniq.each do |message| %>
+    <p id="flash-message"><%= message %>.</p>
+    <% end %>
+  <% end %>
 
-<form method="POST" action="/artworks/<%= @artwork.slug %>">
-  <input type="hidden" name="_method" value="PATCH">
-  <label>Name: </label>
-  <input type="text" name="artwork[name]" value="<%= @artwork.name %>">
-  <label>Artist: </label>
-  <input type="text" name="artwork[artist]" value="<%= @artwork.artist %>"><br></br>
-  <label>Category: </label>
-    <% @artworks.categories.each do |category| %>
-      <input type="checkbox" name="artwork[category]" value="<%= category %>" <%= 'checked' if @artwork.category==category %>><%= category %></input>
-    <% end %><br></br>
-  <label>Or create a new category: </label>
-  <input type="text" name="category"><br></br>
-  <input type="submit" name="submit" value="Edit Art">
-</form>
+  <form method="POST" action="/artworks/<%= @artwork.slug %>">
+    <input type="hidden" name="_method" value="PATCH">
+    <label class="title">Name: </label>
+    <input type="text" name="artwork[name]" size="40" value="<%= @artwork.name %>"><br>
+    <label class ="title">Artist: </label>
+    <input type="text" name="artwork[artist]" size="40" value="<%= @artwork.artist %>"><br></br>
+    <label>Category: </label>
+      <% @artworks.categories.each do |category| %>
+        <input type="checkbox" name="artwork[category]" value="<%= category %>" <%= 'checked' if @artwork.category==category %>><%= category %></input>
+      <% end %><br></br>
+    <label>Or create a new category: </label>
+    <input type="text" name="category"><br></br>
+    <div class="submit">
+      <input type="submit" name="submit" id="submit-1" value="Edit Art">
+    </div>
+  </form>
+</div>

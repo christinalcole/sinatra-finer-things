@@ -10,9 +10,9 @@
   <form method="POST" action="/books/<%= @book.slug %>">
     <input type="hidden" name="_method" value="PATCH">
     <label class="title">Title: </label>
-    <input type="text" name="book[name]" value="<%= @book.name %>"><br>
+    <input type="text" name="book[name]" size="40" value="<%= @book.name %>"><br>
     <label class="title">Author: </label>
-    <input type="text" name="book[author]" value="<%= @book.author %>"><br></br>
+    <input type="text" name="book[author]" size="40" value="<%= @book.author %>"><br></br>
     <div class="submit">
         <input type="submit" name="submit" id="submit-1" value="Edit Book">
     </div>
