@@ -1,19 +1,21 @@
-artwork show page
+<div class="light-container clear">
+  <h3 class="title-2">Artwork Details</h3>
 
-<h1>Artwork Details:</h1>
+  <% if flash.has?(:message) %>
+    <p id="flash-message"><%= flash[:message] %></p>
+  <% end %>
 
-<% if flash.has?(:message) %>
-  <p><%= flash[:message] %></p>
-<% end %>
+  <h3><%= @artwork.name %> by <%= @artwork.artist %></h3>
+  <p>category: <%= @artwork.category %><br>
 
-<h3><%= @artwork.name %> by <%= @artwork.artist %></h3><br>
-<p>category: <%= @artwork.category %>
+  <p>This work of art is in the collection of <%= @artwork.users.count %> club member(s).</p>
+  <p>Entered into the database by <%= User.find_by_id(@artwork.creator_id).name %>.</p>
 
-<p>This work of art is in the collection of <%= @artwork.users.count %> club members.</p>
-
-<a href="/artworks/<%= @artwork.slug %>/edit">Edit Artwork Details</a>
-
-<form method="POST" action="/artworks/<%= @artwork.slug %>/delete">
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete Artwork">
-</form>
+  <button class="button-1"><a href="/artworks/<%= @artwork.slug %>/edit">Edit Artwork Details</a></button>
+  <div class="submit-2">
+    <form method="POST" action="/artworks/<%= @artwork.slug %>/delete">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" id="submit-2" value="Delete Artwork">
+    </form>
+  </div>
+</div>
