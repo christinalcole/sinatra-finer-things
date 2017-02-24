@@ -2,7 +2,7 @@
   <h3 class="title-2">Book Details</h3>
 
   <% if flash.has?(:message) %>
-    <p><%= flash[:message] %></p>
+    <p id="flash-message"><%= flash[:message] %></p>
   <% end %>
 
   <br>
@@ -10,6 +10,7 @@
   <h3><%= @book.name %> by <%= @book.author %></h3>
 
   <p>This book is in the collection of <%= @book.users.count %> club member(s).</p>
+  <p>Entered into the database by <%= User.find_by_id(@book.creator_id).name %>.</p>
 
   <button class="button-1"><a href="/books/<%= @book.slug %>/edit">Edit Book Details</a></button>
   <div class="submit-2">
