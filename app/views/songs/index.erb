@@ -3,6 +3,10 @@
 
   <p> There are currently <%= @songs.count %> pieces of fine music on the Club's playlist:<p><br>
 
+    <% if flash.has?(:message) %>
+      <p id="flash-message"><%= flash[:message] %></p>
+    <% end %>
+
   <table>
     <thead>
       <th>Name</th>

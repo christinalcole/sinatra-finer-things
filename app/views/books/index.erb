@@ -3,6 +3,10 @@
 
   <p> There are currently <%= @books.count %> fine books on the Club's shelves:<p><br>
 
+    <% if flash.has?(:message) %>
+      <p id="flash-message"><%= flash[:message] %></p>
+    <% end %>
+
   <table>
     <thead>
       <th>Title</th>
