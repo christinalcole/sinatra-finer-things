@@ -9,9 +9,9 @@
 
   <form method="POST" action="/artworks">
     <label class="title">Name: </label>
-    <input type="text" name="artwork[name]" placeholder="artwork name"><br>
+    <input type="text" name="artwork[name]" size="40" placeholder="artwork name"><br>
     <label class="title">Artist: </label>
-    <input type="text" name="artwork[artist]" placeholder="artist"><br></br>
+    <input type="text" name="artwork[artist]" size="40" placeholder="artist"><br></br>
     <label class="title">Category: </label>
       <% @artworks.categories.each do |category| %>
         <input type="checkbox" name="artwork[category]" value="<%= category %>"><%= category %></input>
@@ -19,7 +19,7 @@
     <label>Or create a new category: </label>
     <input type="text" name="category"><br></br>
     <div class="submit">
-      <input type="submit" name="submit" id="submit" value="Add Art">
+      <input type="submit" name="submit" id="submit-1" value="Add Art">
     </div>
   </form>
 </div>
