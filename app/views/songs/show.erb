@@ -10,11 +10,10 @@
   <p>This music is in the collection of <%= @song.users.count %> club member(s).</p>
   <p>Entered into the database by <%= User.find_by_id(@song.creator_id).name %>.</p>
 
-  <button class="button-1"><a href="/songs/<%= @song.slug %>/edit">Edit Music Details</a></button>
-  <div class="submit-2">
-    <form method="POST" action="/songs/<%= @song.slug %>/delete">
-      <input type="hidden" name="_method" value="delete">
-      <input type="submit" id="submit-2" value="Delete Music">
-    </form>
-  </div>
+  <button class="button-1-float"><a href="/songs/<%= @song.slug %>/edit">Edit Music Details</a></button>
+
+  <form method="POST" action="/songs/<%= @song.slug %>/delete">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" id="submit-2" value="Delete Music">
+  </form>
 </div>

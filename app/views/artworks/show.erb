@@ -1,4 +1,4 @@
-<div class="light-container clear">
+<div class="light-container clearfix">
   <h3 class="title-2">Artwork Details</h3>
 
   <% if flash.has?(:message) %>
@@ -11,11 +11,10 @@
   <p>This work of art is in the collection of <%= @artwork.users.count %> club member(s).</p>
   <p>Entered into the database by <%= User.find_by_id(@artwork.creator_id).name %>.</p>
 
-  <button class="button-1"><a href="/artworks/<%= @artwork.slug %>/edit">Edit Artwork Details</a></button>
-  <div class="submit-2">
-    <form method="POST" action="/artworks/<%= @artwork.slug %>/delete">
-      <input type="hidden" name="_method" value="delete">
-      <input type="submit" id="submit-2" value="Delete Artwork">
-    </form>
-  </div>
+  <button class="button-1-float"><a href="/artworks/<%= @artwork.slug %>/edit">Edit Artwork Details</a></button>
+  
+  <form method="POST" action="/artworks/<%= @artwork.slug %>/delete">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" id="submit-2" value="Delete Artwork">
+  </form>
 </div>

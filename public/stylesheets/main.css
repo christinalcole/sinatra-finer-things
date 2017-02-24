@@ -277,6 +277,20 @@ button a:hover {
 .button-1 a{
   color: #FFE031;
 }
+
+.button-1-float {
+  background-color: #9E8600;
+  font-family: 'Open Sans', sans-serif;
+  /*color: #7690D2;*/
+  border-color: #FFE031;
+  float: left;
+  margin: 0px 5px;
+}
+
+.button-1-float a{
+  color: #FFE031;
+}
+
 /***** Form *****/
 .form-container {
   background-color: #F8F8F8;
