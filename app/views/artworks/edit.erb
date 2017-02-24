@@ -13,12 +13,12 @@
     <input type="text" name="artwork[name]" size="40" value="<%= @artwork.name %>"><br>
     <label class ="title">Artist: </label>
     <input type="text" name="artwork[artist]" size="40" value="<%= @artwork.artist %>"><br></br>
-    <label>Category: </label>
+    <label class="title">Category: </label>
       <% @artworks.categories.each do |category| %>
         <input type="checkbox" name="artwork[category]" value="<%= category %>" <%= 'checked' if @artwork.category==category %>><%= category %></input>
       <% end %><br></br>
     <label>Or create a new category: </label>
-    <input type="text" name="category"><br></br>
+    <input type="text" name="category" size="28" placeholder="new art category"><br></br>
     <div class="submit">
       <input type="submit" name="submit" id="submit-1" value="Edit Art">
     </div>
