@@ -26,17 +26,15 @@ class BooksController < ApplicationController
     if @book.valid?
       current_user.books << @book
       redirect to "/users/#{current_user.slug}"
-      #redirect to "/books/#{@book.id}"
     else
       flash[:message] = @book.errors.full_messages
       redirect to "/books/new"
     end
   end
 
-  get '/books/:slug' do # need to revise Slugifiable::slug to use generic 'name' attribute, then revise table columns
+  get '/books/:slug' do
     if is_logged_in?
       @book = Book.find_by_slug(params[:slug])
-      #@book = Book.find_by_id(params[:id])
       erb :'books/show'
     else
       redirect to "/login"
@@ -50,7 +48,7 @@ class BooksController < ApplicationController
         erb :'books/edit'
       else
         flash[:message] = "Sorry: you can only edit books that you previously entered into the database"
-        redirect to "/books/#{@book.slug}" #change this route later...
+        redirect to "/books/#{@book.slug}"
       end
     else
       redirect to "/login"
@@ -87,9 +85,5 @@ class BooksController < ApplicationController
     flash[:message] = "That book has been successfully removed from your collection"
     redirect to "/users/#{current_user.slug}"
   end
-
+  
 end
-
-
-# {"book"=>{"title"=>"Dwight's Book", "author"=>"Dwight's Author"},
-#  "submit"=>"Add Book"}

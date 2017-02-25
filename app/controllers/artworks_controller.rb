@@ -35,13 +35,6 @@ class ArtworksController < ApplicationController
     end
   end
 
-  # {"artwork"=>
-  #   {"name"=>"Table in Front of the Window",
-  #    "artist"=>"Picasso",
-  #    "category"=>"painting"},
-  #  "category"=>"",
-  #  "submit"=>"Add Art"}
-
   get '/artworks/:slug' do
     if is_logged_in?
       @artwork = Artwork.find_by_slug(params[:slug])
@@ -100,6 +93,5 @@ class ArtworksController < ApplicationController
     flash[:message] = "This art has been successfully removed from your collection"
     redirect to "/users/#{current_user.slug}"
   end
-
 
 end

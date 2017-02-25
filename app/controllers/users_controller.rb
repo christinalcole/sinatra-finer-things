@@ -67,8 +67,5 @@ class UsersController < ApplicationController
       redirect to "/"
     end
   end
-
+  
 end
-
-
-#{"user"=>{"username"=>"Oscar", "password"=>"test1"}, "Sign Up"=>"Submit"}

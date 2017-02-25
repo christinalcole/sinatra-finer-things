@@ -1,4 +1,5 @@
 class SongsController < ApplicationController
+
   get '/songs' do
     if is_logged_in?
       @songs = Song.all
@@ -82,4 +83,5 @@ class SongsController < ApplicationController
     flash[:message] = "That music has been successfully removed from your collection"
     redirect to "/users/#{current_user.slug}"
   end
+  
 end
