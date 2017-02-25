@@ -1,6 +1,6 @@
 # About The Finer Things Club
 
-The Finer Things Club is a Sinatra-built web app based on the original _ Finer Things Club _ that debuted in Season 4, Episode 6 of _ The Office _ (US).  This app is a tribute of sorts to Pam's, Oscar's, and Toby's interest to celebrate the arts "in a very civilized way" with "no paper, no plastic, and no work talk allowed"  (see ** License ** for more info).
+The Finer Things Club is a Sinatra-built web app based on the original _ Finer Things Club _ that debuted in Season 4, Episode 6 of _ The Office _ (US).  This app is a tribute of sorts to Pam's, Oscar's, and Toby's interest to celebrate the arts "in a very civilized way" with "no paper, no plastic, and no work talk allowed"  (see **License** for more info).
 
 After signing up, a user can create and manage a collection of fine art, music, and books.  Users can also view all such entries to the database supporting the app; future versions will include the ability to identify users with similar interests.
 
